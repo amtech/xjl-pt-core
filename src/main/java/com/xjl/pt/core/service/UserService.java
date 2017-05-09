@@ -1,29 +1,24 @@
 package com.xjl.pt.core.service;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-/**
- * 机构
- * @author leasonlive
- *
- */
 
-import com.xjl.pt.core.domain.Org;
 import com.xjl.pt.core.domain.User;
 import com.xjl.pt.core.domain.XJLDomain;
-import com.xjl.pt.core.mapper.OrgMapper;
+import com.xjl.pt.core.mapper.UserMapper;
 @Service
-public class OrgService extends XJLService {
+public class UserService extends XJLService {
 	@Autowired
-	private OrgMapper orgMapper;
+	private UserMapper userMapper;
 	@Override
 	public void add(XJLDomain domain, User user) {
-		//不设置org，使用原始的号码
+		if (StringUtils.isBlank(domain.getOrg())){
+			throw new RuntimeException("用户的org不能为空");
+		}
 //		domain.setOrg(user.getOrg());
 		domain.setMaster(UUID.randomUUID().toString());
 		domain.setCreateUserId(user.getUserId());
@@ -35,20 +30,20 @@ public class OrgService extends XJLService {
 	}
 	@Override
 	void _add(XJLDomain domain) {
-		this.orgMapper.insert(domain);
+		this.userMapper.insert(domain);
 	}
+
 	@Override
 	void _delete(XJLDomain domain) {
-		this.orgMapper.delete(domain);
+		this.userMapper.delete(domain);
 	}
+
 	@Override
 	void _resetNewId(XJLDomain domain) {
-		((Org)domain).setOrg(UUID.randomUUID().toString());
+		((User)domain).setUserId(UUID.randomUUID().toString());
 	}
-	public List<Org> query(){
-		return this.orgMapper.select();
+	public User queryById(String userId){
+		return this.userMapper.selectById(userId);
 	}
-	public Org queryById(String org){
-		return this.orgMapper.selectById(org);
-	}
+
 }
