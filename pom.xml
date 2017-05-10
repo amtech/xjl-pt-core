@@ -1,20 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.xjl.pt</groupId>
-  <artifactId>xjl_pt_core</artifactId>
-  <version>0.0.1</version>
-  <packaging>jar</packaging>
+	<groupId>com.xjl.pt</groupId>
+	<artifactId>xjl_pt_core</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
 
-  <name>xjl_pt_core</name>
-  <url>http://maven.apache.org</url>
+	<name>xjl_pt_core</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-  <build>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -43,7 +43,7 @@
 	<distributionManagement>
 		<repository>
 			<id>user-releases</id>
-			<url>http://123.57.4.104:8081/nexus/content/repositories/releases</url>
+			<url>http://123.57.4.104:8881/nexus/content/repositories/releases</url>
 		</repository>
 	</distributionManagement>
 	<dependencies>
@@ -56,7 +56,7 @@
 		<dependency>
 			<groupId>com.xjl</groupId>
 			<artifactId>xjl-sql-processor</artifactId>
-			<version>0.0.2</version>
+			<version>0.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -65,11 +65,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		    <groupId>postgresql</groupId>
-		    <artifactId>postgresql</artifactId>
-		    <version>9.3-1102.jdbc41</version>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901-1.jdbc4</version>
 		</dependency>
-		
+
 	</dependencies>
 </project>
 
