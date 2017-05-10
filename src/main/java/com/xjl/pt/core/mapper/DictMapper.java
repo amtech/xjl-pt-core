@@ -19,7 +19,7 @@ public interface DictMapper {
 			+ XJLMapper.FIX_SELECT_FIELD + " from " + TABLE_NAME + " where state='A'")
 	public List<Dict> selectAll();
 	@Select("select dict_id as dictId, dict_name as dictName, "
-			+ XJLMapper.FIX_SELECT_FIELD + " from " + TABLE_NAME + " where dict_name=#{dictName}")
-	public Dict selectByName(String dictName);
+			+ XJLMapper.FIX_SELECT_FIELD + " from " + TABLE_NAME + " where state='A' and dict_name like '%'||#{dictName}||'%'")
+	public List<Dict> selectByName(String dictName);
 	
 }

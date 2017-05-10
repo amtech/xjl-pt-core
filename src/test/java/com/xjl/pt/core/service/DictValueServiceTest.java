@@ -24,7 +24,8 @@ public class DictValueServiceTest {
 	@Test
 	public void add(){
 		User user = this.userService.queryById("9fcfdb3e-3bdb-4234-a0c4-f91d023c308e");
-		Dict dict = this.dictService.queryByName("事项类别");
+		List<Dict> list = this.dictService.queryByName("事项类别",1,10);
+		Dict dict = list.get(0);
 		DictValue dictValue = new DictValue();
 		dictValue.setDictId(dict.getDictId());
 		dictValue.setDictValueCode("10");
@@ -39,7 +40,8 @@ public class DictValueServiceTest {
 	}
 	@Test
 	public void query(){
-		Dict dict = this.dictService.queryByName("事项类别");
+		List<Dict> dicts = this.dictService.queryByName("事项类别",1,10);
+		Dict dict = dicts.get(0);
 		List<DictValue> list = this.dictValueService.queryByDictId(dict.getDictId());
 		for (DictValue dictValue : list) {
 			System.out.println("code:" + dictValue.getDictValueCode() + " name:" + dictValue.getDictValueName());

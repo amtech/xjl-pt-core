@@ -1,10 +1,13 @@
 package com.xjl.pt.core.service;
 
+import java.util.List;
 import java.util.UUID;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.xjl.pt.core.domain.Dict;
 import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.core.mapper.DictMapper;
@@ -31,8 +34,21 @@ public class DictService extends XJLService {
 	 * @param dictName 字典名称
 	 * @return
 	 */
-	public Dict queryByName(String dictName){
-		return this.dictMapper.selectByName(dictName);
+	public List<Dict> queryByName(String dictName,int page, int pageSize){
+		
+		if (StringUtils.isBlank(dictName)){
+			return this.query(page, pageSize);
+		} else {
+			PageHelper.startPage(page, pageSize);
+			return this.dictMapper.selectByName(dictName);
+		}
 	}
-
+	/**
+	 * 查询字典
+	 * @return
+	 */
+	public List<Dict> query(int page, int pageSize){
+		PageHelper.startPage(page, pageSize);
+		return this.dictMapper.selectAll();
+	}
 }

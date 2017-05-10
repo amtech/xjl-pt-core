@@ -1,5 +1,6 @@
 package com.xjl.pt.core.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.junit.Test;
@@ -23,7 +24,14 @@ public class DictServiceTest {
 		User user = this.userService.queryById("9fcfdb3e-3bdb-4234-a0c4-f91d023c308e");
 		Dict dict = new Dict();
 		dict.setDictId(UUID.randomUUID().toString());
-		dict.setDictName("事项类别");
+		dict.setDictName("行使层级");
 		dictService.add(dict, user);
+	}
+	@Test
+	public void query(){
+		List<Dict> list = this.dictService.queryByName(null,1,10);
+		for (Dict dict : list) {
+			System.out.println(dict.getDictName());
+		}
 	}
 }
