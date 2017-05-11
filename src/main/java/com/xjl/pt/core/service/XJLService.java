@@ -24,6 +24,7 @@ public abstract class XJLService {
 		domain.setCancelDate(null);
 		domain.setCancelUserId(null);
 		domain.setState(XJLDomain.StateType.A.name());
+		this._resetNewId(domain);
 		_add(domain);
 	}
 	/**
@@ -49,12 +50,13 @@ public abstract class XJLService {
 	 */
 	public void modify(XJLDomain domain, User user){
 		this.delete(domain,user);
-		this._resetNewId(domain);
+		
 		domain.setCreateUserId(user.getUserId());
 		domain.setCreateDate(Calendar.getInstance().getTime());
 		domain.setCancelDate(null);
 		domain.setCancelUserId(null);
 		domain.setState(XJLDomain.StateType.A.name());
+		this._resetNewId(domain);
 		this._add(domain);
 	}
 	/**

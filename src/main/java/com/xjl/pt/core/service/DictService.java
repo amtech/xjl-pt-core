@@ -22,7 +22,7 @@ public class DictService extends XJLService {
 
 	@Override
 	void _delete(XJLDomain domain) {
-		throw new RuntimeException("该方法还未实现");
+		this.dictMapper.delete(domain);
 	}
 
 	@Override
@@ -50,5 +50,8 @@ public class DictService extends XJLService {
 	public List<Dict> query(int page, int pageSize){
 		PageHelper.startPage(page, pageSize);
 		return this.dictMapper.selectAll();
+	}
+	public Dict queryById(String dictId){
+		return this.dictMapper.selectById(dictId);
 	}
 }
