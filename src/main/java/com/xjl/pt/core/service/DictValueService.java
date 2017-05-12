@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.xjl.pt.core.domain.DictValue;
 import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.core.mapper.DictValueMapper;
@@ -32,8 +33,16 @@ public class DictValueService extends XJLService {
 	 * @param dictId
 	 * @return
 	 */
-	public List<DictValue> queryByDictId(String dictId){
+	public List<DictValue> queryByDictId(String dictId,int page, int pageSize){
+		PageHelper.startPage(page, pageSize);
 		return this.dictValueMapper.selectByDictId(dictId);
 	}
-
+	/**
+	 * 根据dictId获取值的数量
+	 * @param dictId
+	 * @return
+	 */
+	public int countByDictId(String dictId){
+		return this.dictValueMapper.selectCountByDictId(dictId);
+	}
 }

@@ -42,7 +42,7 @@ public class DictValueServiceTest {
 	public void query(){
 		List<Dict> dicts = this.dictService.queryByName("事项类别",1,10);
 		Dict dict = dicts.get(0);
-		List<DictValue> list = this.dictValueService.queryByDictId(dict.getDictId());
+		List<DictValue> list = this.dictValueService.queryByDictId(dict.getDictId(),1,10);
 		for (DictValue dictValue : list) {
 			System.out.println("code:" + dictValue.getDictValueCode() + " name:" + dictValue.getDictValueName());
 		}
