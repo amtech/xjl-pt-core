@@ -1,6 +1,7 @@
 package com.xjl.pt.core.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class DictValueService extends XJLService {
 
 	@Override
 	void _resetNewId(XJLDomain domain) {
-		
+		((DictValue)domain).setDictValueId(UUID.randomUUID().toString());
 	}
 	/**
 	 * 根据dictId获取所有的字典项列表
