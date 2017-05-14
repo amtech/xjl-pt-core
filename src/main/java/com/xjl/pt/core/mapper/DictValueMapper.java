@@ -18,6 +18,9 @@ public interface DictValueMapper {
 	@Select("select dict_id as dictId, dict_value_id as dictValueId,dict_value_code as dictValueCode,dict_value_name as dictValueName, "
 			+ XJLMapper.FIX_SELECT_FIELD + " from " + TABLE_NAME + " where dict_id=#{dictId} and state='A'")
 	public List<DictValue> selectByDictId(String dictId);
+	@Select("select dict_id as dictId, dict_value_id as dictValueId,dict_value_code as dictValueCode,dict_value_name as dictValueName, "
+			+ XJLMapper.FIX_SELECT_FIELD + " from " + TABLE_NAME + " where dict_id=#{0} and (dict_value_code like '%'||#{1}||'%' or dict_value_name like '%'||#{1}||'%') and state='A'")
+	public List<DictValue> selectByDictIdWithSearch(String dictId,String search);
 	@Select("select count(*) from " + TABLE_NAME  + " where dict_id=#{dictId} and state='A'")
 	public int selectCountByDictId(String dictId);
 }

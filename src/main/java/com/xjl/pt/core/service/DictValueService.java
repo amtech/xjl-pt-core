@@ -39,6 +39,18 @@ public class DictValueService extends XJLService {
 		return this.dictValueMapper.selectByDictId(dictId);
 	}
 	/**
+	 * 查询字典值
+	 * @param dictId 字典id
+	 * @param search 搜索条件
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 */
+	public List<DictValue> queryByDictId(String dictId,String search, int page, int pageSize){
+		PageHelper.startPage(page, pageSize);
+		return this.dictValueMapper.selectByDictIdWithSearch(dictId,search);
+	}
+	/**
 	 * 根据dictId获取值的数量
 	 * @param dictId
 	 * @return
