@@ -16,17 +16,17 @@ public class DictValueService extends XJLService {
 	private DictValueMapper dictValueMapper;
 	
 	@Override
-	void _add(XJLDomain domain) {
+	public void _add(XJLDomain domain) {
 		this.dictValueMapper.insert(domain);
 	}
 
 	@Override
-	void _delete(XJLDomain domain) {
+	public void _delete(XJLDomain domain) {
 		throw new RuntimeException("该方法未实现");
 	}
 
 	@Override
-	void _resetNewId(XJLDomain domain) {
+	public void _resetNewId(XJLDomain domain) {
 		((DictValue)domain).setDictValueId(UUID.randomUUID().toString());
 	}
 	/**

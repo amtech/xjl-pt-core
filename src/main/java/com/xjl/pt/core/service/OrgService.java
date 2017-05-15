@@ -34,15 +34,15 @@ public class OrgService extends XJLService {
 		_add(domain);
 	}
 	@Override
-	void _add(XJLDomain domain) {
+	public void _add(XJLDomain domain) {
 		this.orgMapper.insert(domain);
 	}
 	@Override
-	void _delete(XJLDomain domain) {
+	public void _delete(XJLDomain domain) {
 		this.orgMapper.delete(domain);
 	}
 	@Override
-	void _resetNewId(XJLDomain domain) {
+	public void _resetNewId(XJLDomain domain) {
 		((Org)domain).setOrg(UUID.randomUUID().toString());
 	}
 	public List<Org> query(){

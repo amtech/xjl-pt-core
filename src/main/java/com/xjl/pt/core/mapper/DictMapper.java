@@ -9,7 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import com.xjl.pt.core.domain.Dict;
 import com.xjl.pt.core.domain.XJLDomain;
-
+/**
+ * 字典
+ * @author lilisheng
+ *
+ */
 @Repository
 public interface DictMapper {
 	static final String TABLE_NAME = "xjl_pt_dict";

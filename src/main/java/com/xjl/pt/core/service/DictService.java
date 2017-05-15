@@ -16,17 +16,17 @@ public class DictService extends XJLService {
 	@Autowired
 	private DictMapper dictMapper;
 	@Override
-	void _add(XJLDomain domain) {
+	public void _add(XJLDomain domain) {
 		this.dictMapper.insert(domain);
 	}
 
 	@Override
-	void _delete(XJLDomain domain) {
+	public void _delete(XJLDomain domain) {
 		this.dictMapper.delete(domain);
 	}
 
 	@Override
-	void _resetNewId(XJLDomain domain) {
+	public void _resetNewId(XJLDomain domain) {
 		((Dict)domain).setDictId(UUID.randomUUID().toString());
 	}
 	/**

@@ -30,7 +30,7 @@ public abstract class XJLService {
 	/**
 	 * 每个之类自己实现具体往数据中添加的方法
 	 */
-	abstract void _add(XJLDomain domain);
+	public abstract void _add(XJLDomain domain);
 	/**
 	 * 删除一条数据，实际上是把该数据的状态改为X，并记录修改人和修改时间
 	 */
@@ -44,7 +44,7 @@ public abstract class XJLService {
 	 * 删除一个domain
 	 * @param domain
 	 */
-	abstract void _delete(XJLDomain domain);
+	public abstract void _delete(XJLDomain domain);
 	/**
 	 * 修改记录，先删除原有记录，再添加一条新的记录
 	 */
@@ -63,5 +63,5 @@ public abstract class XJLService {
 	 * 重新设置ID，也就是生成一个新的ID
 	 * @param domain
 	 */
-	abstract void _resetNewId(XJLDomain domain);
+	public abstract void _resetNewId(XJLDomain domain);
 }

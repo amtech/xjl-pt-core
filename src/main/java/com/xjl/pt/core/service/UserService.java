@@ -29,21 +29,23 @@ public class UserService extends XJLService {
 		_add(domain);
 	}
 	@Override
-	void _add(XJLDomain domain) {
+	public void _add(XJLDomain domain) {
 		this.userMapper.insert(domain);
 	}
 
 	@Override
-	void _delete(XJLDomain domain) {
+	public void _delete(XJLDomain domain) {
 		this.userMapper.delete(domain);
 	}
 
 	@Override
-	void _resetNewId(XJLDomain domain) {
+	public void _resetNewId(XJLDomain domain) {
 		((User)domain).setUserId(UUID.randomUUID().toString());
 	}
 	public User queryById(String userId){
 		return this.userMapper.selectById(userId);
 	}
-
+	public User queryFixUser(){
+		return this.queryById("9fcfdb3e-3bdb-4234-a0c4-f91d023c308e");
+	}
 }
