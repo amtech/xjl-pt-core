@@ -1,10 +1,10 @@
 package com.xjl.pt.core.service;
 import java.util.Calendar;
 import java.util.UUID;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.xjl.pt.core.domain.User;
+import com.xjl.pt.core.domain.UserInfo;
 import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.core.mapper.UserInfoMapper;
 /**
@@ -31,7 +31,6 @@ public class UserInfoService extends XJLService {
 	@Override
 	public void _add(XJLDomain domain) {
 		 this.userInfoMapper.insert(domain);
-		
 	}
 	@Override
 	public void _delete(XJLDomain domain) {
@@ -41,6 +40,24 @@ public class UserInfoService extends XJLService {
 	@Override
 	public void _resetNewId(XJLDomain domain) {
 		// TODO Auto-generated method stub
-		
+	}
+	/**
+	 * 根据身份证号码获取信息
+	 */
+	public UserInfo queryByCardNo(String cardNo){
+		return this.userInfoMapper.selectByCardNo(cardNo);
+	}
+	/**
+	 * 根据手机号获取信息
+	 */
+	public UserInfo queryByPhoneNo(String phoneNo){
+		return this.userInfoMapper.selectByPhoneNo(phoneNo);
+	}
+	
+	/**
+	 * 上传证件照片存入数据库
+	 */
+	public void modify(XJLDomain domain){
+		this.userInfoMapper.updatePhoto(domain);
 	}
 }

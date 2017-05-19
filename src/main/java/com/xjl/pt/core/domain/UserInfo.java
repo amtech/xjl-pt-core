@@ -15,15 +15,34 @@ public class UserInfo extends XJLDomain {
 	/**
 	 * 手持身份证照片
 	 */
-	private String headShot;
+	private String handShot;
 	/**
 	 * 身份证正面照片
 	 */
-	private String handCardPhoto;
+	private String cardPhoto;
 	/**
 	 * 身份证背面照片
 	 */
-	private String handCardBackPhoto;
+	private String cardBackPhoto;
+	
+	public String getHandShot() {
+		return handShot;
+	}
+	public void setHandShot(String handShot) {
+		this.handShot = handShot;
+	}
+	public String getCardPhoto() {
+		return cardPhoto;
+	}
+	public void setCardPhoto(String cardPhoto) {
+		this.cardPhoto = cardPhoto;
+	}
+	public String getCardBackPhoto() {
+		return cardBackPhoto;
+	}
+	public void setCardBackPhoto(String cardBackPhoto) {
+		this.cardBackPhoto = cardBackPhoto;
+	}
 	public String getPhoneNo() {
 		return phoneNo;
 	}
@@ -47,23 +66,5 @@ public class UserInfo extends XJLDomain {
 	}
 	public void setCardNo(String cardNo) {
 		this.cardNo = cardNo;
-	}
-	public String getHeadShot() {
-		return headShot;
-	}
-	public void setHeadShot(String headShot) {
-		this.headShot = headShot;
-	}
-	public String getHandCardPhoto() {
-		return handCardPhoto;
-	}
-	public void setHandCardPhoto(String handCardPhoto) {
-		this.handCardPhoto = handCardPhoto;
-	}
-	public String getHandCardBackPhoto() {
-		return handCardBackPhoto;
-	}
-	public void setHandCardBackPhoto(String handCardBackPhoto) {
-		this.handCardBackPhoto = handCardBackPhoto;
 	}
 }
