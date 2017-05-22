@@ -20,7 +20,6 @@ public class UserService extends XJLService {
 			throw new RuntimeException("用户的org不能为空");
 		}
 //		domain.setOrg(user.getOrg());
-		domain.setMaster(UUID.randomUUID().toString());
 		domain.setCreateUserId(user.getUserId());
 		domain.setCreateDate(Calendar.getInstance().getTime());
 		domain.setCancelDate(null);
