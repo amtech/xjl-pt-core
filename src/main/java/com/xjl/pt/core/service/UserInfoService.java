@@ -1,6 +1,5 @@
 package com.xjl.pt.core.service;
 import java.util.Calendar;
-import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.xjl.pt.core.domain.User;
@@ -20,7 +19,6 @@ public class UserInfoService extends XJLService {
 		//if (StringUtils.isBlank(domain.getOrg())){
 			//throw new RuntimeException("用户的org不能为空");
 		//}
-		domain.setMaster(UUID.randomUUID().toString());
 		domain.setCreateUserId(user.getUserId());
 		domain.setCreateDate(Calendar.getInstance().getTime());
 		domain.setCancelDate(null);

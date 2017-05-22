@@ -38,6 +38,6 @@ public interface UserInfoMapper {
 	 * 通过手机号查询
 	 * @param phoneNo
 	 */
-	@Select("select "+USERINFO_SELECT_FIELD+" from "+TABLE_NAME+" where phoneno =#{phoneNo}")
+	@Select("select  "+USERINFO_SELECT_FIELD+","+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+" where phoneno =#{phoneNo}")
 	public UserInfo selectByPhoneNo(String phoneNo);
 }
