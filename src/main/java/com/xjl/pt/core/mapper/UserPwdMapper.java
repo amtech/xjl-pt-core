@@ -14,6 +14,7 @@ import com.xjl.pt.core.domain.XJLDomain;
 @Repository
 public interface UserPwdMapper {
 	static final String TABLE_NAME = "xjl_pt_user_password";
+	static final String STATE_VALID="A";
 	
 	/**
 	 * 执行新增插入操作
@@ -31,6 +32,6 @@ public interface UserPwdMapper {
 	/**
 	 * 得到信息
 	 */
-	@Select("select user_id,password,"+XJLMapper.FIX_SELECT_FIELD+" where master=#{master}")
+	@Select("select user_id,password,"+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+"  where master=#{master} and state='"+STATE_VALID+"'")
 	public UserPwd selectByMaster(XJLDomain domain);
 }
