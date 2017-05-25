@@ -3,10 +3,8 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-
 import com.xjl.pt.core.domain.UserPwd;
 import com.xjl.pt.core.domain.XJLDomain;
-
 /**
  * 用户密码数据持久层
  * @author guan.zheyuan

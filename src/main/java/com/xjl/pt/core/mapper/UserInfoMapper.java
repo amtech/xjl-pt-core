@@ -28,7 +28,7 @@ public interface UserInfoMapper {
 	 */
 	@Update("update  "+TABLE_NAME+" set  handshot=#{handShot},card_photo=#{cardPhoto},card_backphoto=#{cardBackPhoto} where cardno = #{cardNo}")
 	public void updatePhoto(XJLDomain domain);
-	/**
+	/** 
 	 * 通过身份证查询
 	 * @param cardNo
 	 */

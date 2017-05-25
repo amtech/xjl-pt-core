@@ -7,7 +7,7 @@ import com.xjl.pt.core.domain.UserInfo;
 import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.core.mapper.UserInfoMapper;
 /**
- * ÓÃ»§»ù±¾ĞÅÏ¢Êı¾İÒµÎñÀà
+ * ç”¨æˆ·åŸºæœ¬ä¿¡æ¯æ•°æ®ä¸šåŠ¡ç±»
  * @author guan.zheyuan
  */
 @Service
@@ -17,7 +17,7 @@ public class UserInfoService extends XJLService {
 	@Override
 	public void add(XJLDomain domain, User user) {
 		//if (StringUtils.isBlank(domain.getOrg())){
-			//throw new RuntimeException("ÓÃ»§µÄorg²»ÄÜÎª¿Õ");
+			//throw new RuntimeException("ç”¨æˆ·çš„orgä¸èƒ½ä¸ºç©º");
 		//}
 		domain.setCreateUserId(user.getUserId());
 		domain.setCreateDate(Calendar.getInstance().getTime());
@@ -40,20 +40,20 @@ public class UserInfoService extends XJLService {
 		// TODO Auto-generated method stub
 	}
 	/**
-	 * ¸ù¾İÉí·İÖ¤ºÅÂë»ñÈ¡ĞÅÏ¢
+	 * æ ¹æ®èº«ä»½è¯å·ç è·å–ä¿¡æ¯
 	 */
 	public UserInfo queryByCardNo(String cardNo){
 		return this.userInfoMapper.selectByCardNo(cardNo);
 	}
 	/**
-	 * ¸ù¾İÊÖ»úºÅ»ñÈ¡ĞÅÏ¢
+	 * æ ¹æ®æ‰‹æœºå·è·å–ä¿¡æ¯
 	 */
 	public UserInfo queryByPhoneNo(String phoneNo){
 		return this.userInfoMapper.selectByPhoneNo(phoneNo);
 	}
 	
 	/**
-	 * ÉÏ´«Ö¤¼şÕÕÆ¬´æÈëÊı¾İ¿â
+	 * ä¸Šä¼ è¯ä»¶ç…§ç‰‡å­˜å…¥æ•°æ®åº“
 	 */
 	public void modify(XJLDomain domain){
 		this.userInfoMapper.updatePhoto(domain);
