@@ -14,30 +14,30 @@ import com.xjl.pt.core.domain.XJLDomain;
 @Repository
 public interface UserInfoMapper {
 	static final String TABLE_NAME = "xjl_pt_userinfo";
-	static final String USERINFO_SELECT_FIELD="user_id as userid,cardno,phoneno,handshot,card_photo,card_backphoto,username";
+	static final String USERINFO_SELECT_FIELD="user_id as userid,card_no as cardno,phone_no as phoneno,hand_shot_photo_uri as handShotPhotoUrl,hand_card_photo_uri as handCardPhotoUrl,card_back_photo_uri as cardBackPhotoUrl,auth_state as authState,card_name as cardName ,card_front_photo_uri as cardFrontPhotoUrl,auth_date as authDate,auth_user_id as authUserId,auth_channel_type as authChannelType,auth_channel_name as authChannelName";
 	
 	/**
 	 * 执行插入
 	 * @param userInfo
 	 */
-	@Insert("insert into "+TABLE_NAME+"(user_id,username,cardno,phoneno,"+XJLMapper.FIX_INSERT_FIELD+")"
-			+"values(#{userId},#{userName},#{cardNo},#{phoneNo},"+XJLMapper.FIX_INSERT_VALUE+")")
+	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,"+XJLMapper.FIX_INSERT_FIELD+")"
+			+"values(#{userId},#{cardNo},#{phoneNo},"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
 	/**
 	 * 更新
 	 */
-	@Update("update  "+TABLE_NAME+" set  handshot=#{handShot},card_photo=#{cardPhoto},card_backphoto=#{cardBackPhoto} where cardno = #{cardNo}")
+	@Update("update  "+TABLE_NAME+" set  hand_shot_photo_uri=#{handShotPhotoUrl},hand_card_photo_uri=#{handCardPhotoUrl},card_back_photo_uri=#{cardBackPhotoUrl} where cardno = #{cardNo}")
 	public void updatePhoto(XJLDomain domain);
 	/** 
 	 * 得到用户信息
 	 * @param cardNo
 	 */
-	@Select("select "+USERINFO_SELECT_FIELD+" from "+TABLE_NAME+" where cardno =#{cardNo}")
+	@Select("select "+USERINFO_SELECT_FIELD+" from "+TABLE_NAME+" where card_no =#{cardNo}")
 	public UserInfo selectByCardNo(String cardNo);
 	/**
 	 * 得到用户信息
 	 * @param phoneNo
 	 */
-	@Select("select  "+USERINFO_SELECT_FIELD+","+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+" where phoneno =#{phoneNo}")
+	@Select("select  "+USERINFO_SELECT_FIELD+","+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+" where phone_no =#{phoneNo}")
 	public UserInfo selectByPhoneNo(String phoneNo);
 }
