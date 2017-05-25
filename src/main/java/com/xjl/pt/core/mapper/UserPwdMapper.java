@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.xjl.pt.core.domain.UserPwd;
 import com.xjl.pt.core.domain.XJLDomain;
 /**
- * ÓÃ»§ÃÜÂëÊı¾İ³Ö¾Ã²ã
+ * ç”¨æˆ·å¯†ç æ•°æ®æŒä¹…å±‚
  * @author guan.zheyuan
  */
 @Repository
@@ -15,20 +15,20 @@ public interface UserPwdMapper {
 	static final String STATE_VALID="A";
 	
 	/**
-	 * Ö´ĞĞĞÂÔö²åÈë²Ù×÷
+	 * æ‰§è¡Œæ–°å¢æ’å…¥æ“ä½œ
 	 * @param userPwd
 	 */
 	@Insert("insert into "+TABLE_NAME+"(user_id,password,"+XJLMapper.FIX_INSERT_FIELD+")"
 			+"values(#{userId},#{password},"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
 	/**
-	 * Ö´ĞĞ¸üĞÂ²Ù×÷
+	 * æ‰§è¡Œæ›´æ–°æ“ä½œ
 	 * @param domain
 	 */
 	@Delete("update "+TABLE_NAME+" set user_id=#{userId},"+XJLMapper.FIX_DELETE_FIELD+" where master=#{master}")
 	public void delete(XJLDomain domain);
 	/**
-	 * µÃµ½ĞÅÏ¢
+	 * å¾—åˆ°ä¿¡æ¯
 	 */
 	@Select("select user_id as userid,password,"+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+"  where user_id=#{userId} and state='"+STATE_VALID+"'")
 	public UserPwd selectByUserId(XJLDomain domain);

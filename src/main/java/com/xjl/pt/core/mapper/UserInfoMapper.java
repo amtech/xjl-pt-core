@@ -7,7 +7,7 @@ import com.xjl.pt.core.domain.UserInfo;
 import com.xjl.pt.core.domain.XJLDomain;
 
 /**
- * ÓÃ»§»ù±¾ĞÅÏ¢Êı¾İ³Ö¾Ã²ã
+ * ç”¨æˆ·ç™»å½•æ•°æ®æŒä¹…å±‚
  * @author guan.zheyuan
  *
  */
@@ -17,25 +17,25 @@ public interface UserInfoMapper {
 	static final String USERINFO_SELECT_FIELD="user_id as userid,cardno,phoneno,handshot,card_photo,card_backphoto,username";
 	
 	/**
-	 * Ö´ĞĞĞÂÔö²åÈë
+	 * æ‰§è¡Œæ’å…¥
 	 * @param userInfo
 	 */
 	@Insert("insert into "+TABLE_NAME+"(user_id,username,cardno,phoneno,"+XJLMapper.FIX_INSERT_FIELD+")"
 			+"values(#{userId},#{userName},#{cardNo},#{phoneNo},"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
 	/**
-	 * ĞŞ¸ÄÍ¼Æ¬µØÖ·
+	 * æ›´æ–°
 	 */
 	@Update("update  "+TABLE_NAME+" set  handshot=#{handShot},card_photo=#{cardPhoto},card_backphoto=#{cardBackPhoto} where cardno = #{cardNo}")
 	public void updatePhoto(XJLDomain domain);
 	/** 
-	 * Í¨¹ıÉí·İÖ¤²éÑ¯
+	 * å¾—åˆ°ç”¨æˆ·ä¿¡æ¯
 	 * @param cardNo
 	 */
 	@Select("select "+USERINFO_SELECT_FIELD+" from "+TABLE_NAME+" where cardno =#{cardNo}")
 	public UserInfo selectByCardNo(String cardNo);
 	/**
-	 * Í¨¹ıÊÖ»úºÅ²éÑ¯
+	 * å¾—åˆ°ç”¨æˆ·ä¿¡æ¯
 	 * @param phoneNo
 	 */
 	@Select("select  "+USERINFO_SELECT_FIELD+","+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+" where phoneno =#{phoneNo}")
