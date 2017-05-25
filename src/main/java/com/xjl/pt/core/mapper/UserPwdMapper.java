@@ -32,6 +32,6 @@ public interface UserPwdMapper {
 	/**
 	 * 得到信息
 	 */
-	@Select("select user_id,password,"+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+"  where master=#{master} and state='"+STATE_VALID+"'")
-	public UserPwd selectByMaster(XJLDomain domain);
+	@Select("select user_id as userid,password,"+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+"  where user_id=#{userId} and state='"+STATE_VALID+"'")
+	public UserPwd selectByUserId(XJLDomain domain);
 }

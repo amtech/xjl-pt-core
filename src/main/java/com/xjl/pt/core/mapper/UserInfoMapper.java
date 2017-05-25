@@ -14,7 +14,7 @@ import com.xjl.pt.core.domain.XJLDomain;
 @Repository
 public interface UserInfoMapper {
 	static final String TABLE_NAME = "xjl_pt_userinfo";
-	static final String USERINFO_SELECT_FIELD="user_id,cardno,phoneno,handshot,card_photo,card_backphoto,username";
+	static final String USERINFO_SELECT_FIELD="user_id as userid,cardno,phoneno,handshot,card_photo,card_backphoto,username";
 	
 	/**
 	 * 执行新增插入
