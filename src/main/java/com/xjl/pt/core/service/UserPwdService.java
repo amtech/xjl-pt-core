@@ -47,7 +47,7 @@ public class UserPwdService extends XJLService  {
 	/**
 	 * 得到用户密码信息
 	 */
-	public UserPwd queryByMaster(XJLDomain domain){
-		return this.userPwdMapper.selectByMaster(domain);
+	public UserPwd queryByUserId(XJLDomain domain){
+		return this.userPwdMapper.selectByUserId(domain);
 	}
 }
