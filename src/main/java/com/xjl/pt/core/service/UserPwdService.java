@@ -9,7 +9,7 @@ import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.core.mapper.UserPwdMapper;
 
 /**
- * ÓÃ»§ÃÜÂëÊı¾İÒµÎñÀà
+ *ç”¨æˆ·å¯†ç åŸºæœ¬ä¸šåŠ¡ç±»
  * @author guan.zheyuan
  */
 @Service
@@ -20,7 +20,7 @@ public class UserPwdService extends XJLService  {
 	@Override
 	public void add(XJLDomain domain, User user) {
 		//if (StringUtils.isBlank(domain.getOrg())){
-			//throw new RuntimeException("ÓÃ»§µÄorg²»ÄÜÎª¿Õ");
+			//throw new RuntimeException("ç”¨æˆ·çš„orgä¸èƒ½ä¸ºç©º");
 		//}
 		domain.setCreateUserId(user.getUserId());
 		domain.setCreateDate(Calendar.getInstance().getTime());
@@ -45,7 +45,7 @@ public class UserPwdService extends XJLService  {
 		this.userPwdMapper.delete(domain);
 	}
 	/**
-	 * µÃµ½ÓÃ»§ÃÜÂëĞÅÏ¢
+	 * é€šè¿‡ç”¨æˆ·ç¼–å·è·å–å¯†ç 
 	 */
 	public UserPwd queryByUserId(XJLDomain domain){
 		return this.userPwdMapper.selectByUserId(domain);
