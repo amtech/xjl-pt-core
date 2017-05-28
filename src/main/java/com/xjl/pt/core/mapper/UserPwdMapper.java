@@ -25,8 +25,10 @@ public interface UserPwdMapper {
 	 * 执行更新操作
 	 * @param domain
 	 */
-	@Delete("update "+TABLE_NAME+" set user_id=#{userId},"+XJLMapper.FIX_DELETE_FIELD+" where master=#{master}")
+	@Delete("update "+TABLE_NAME+" set "+XJLMapper.FIX_DELETE_FIELD+" where user_id=#{userId}")
 	public void delete(XJLDomain domain);
+	@Delete("update "+TABLE_NAME+" set password=#{password},"+XJLMapper.FIX_UPDATE_FIELD+" where master=#{master}")
+	public void update(XJLDomain domain);
 	/**
 	 * 得到信息
 	 */

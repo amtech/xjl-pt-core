@@ -25,4 +25,8 @@ public interface UserMapper {
 	public User selectById(String userId);
 	@Delete("update " + TABLE_NAME + " set "+XJLMapper.FIX_DELETE_FIELD + " where user_id=#{userId}")
 	public void delete(XJLDomain domain);
+	@Delete("update " + TABLE_NAME + " set "
+			+ "user_name=#{userName},"
+			+ ""+XJLMapper.FIX_UPDATE_FIELD + " where user_id=#{userId}")
+	public void update(XJLDomain domain);
 }

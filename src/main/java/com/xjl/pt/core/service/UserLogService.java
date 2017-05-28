@@ -13,7 +13,7 @@ import com.xjl.pt.core.mapper.UserLogMapper;
 /**
  * 用户日志基本业务类
  * @author guan.zheyuan
- *
+ *@deprecated 什么会有一个加载配置文件的操作
  */
 @Service
 @ContextConfiguration(locations = { "classpath*:/ApplicationContext-*.xml"})  
@@ -27,6 +27,7 @@ public class UserLogService  extends XJLService   {
 	}
 	/**
 	 * 设置固定字段的值
+	 * @deprecated ，domain就是一个userLog对象，为什么后面还有一个userLog对象？？？？
 	 * @param domain
 	 * @param user
 	 */
@@ -49,10 +50,12 @@ public class UserLogService  extends XJLService   {
 
 	@Override
 	public void _delete(XJLDomain domain) {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException("不支持删除方法");
 	}
-
+	@Override
+	public void _modify(XJLDomain domain) {
+		throw new RuntimeException("不支持修改方法");
+	}
 	@Override
 	public void _resetNewId(XJLDomain domain) {
 		// TODO Auto-generated method stub

@@ -44,6 +44,11 @@ public class UserPwdService extends XJLService  {
 		domain.setState(XJLDomain.StateType.X.name());
 		this.userPwdMapper.delete(domain);
 	}
+	@Override
+	public void _modify(XJLDomain domain) {
+		this.userPwdMapper.update(domain);
+		
+	}
 	/**
 	 * 通过用户编号获取密码
 	 */

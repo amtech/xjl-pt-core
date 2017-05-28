@@ -2,8 +2,10 @@ package com.xjl.pt.core.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.xjl.pt.core.domain.DictItem;
@@ -23,4 +25,9 @@ public interface DictItemMapper {
 	public List<DictItem> selectByDictIdWithSearch(String dictId,String search);
 	@Select("select count(*) from " + TABLE_NAME  + " where dict_id=#{dictId} and state='A'")
 	public int selectCountByDictId(String dictId);
+	@Delete("update " + TABLE_NAME + " set "+XJLMapper.FIX_DELETE_FIELD + " where dict_item_id=#{dictItemId}")
+	public void delete(XJLDomain domain);
+	@Update("update " + TABLE_NAME + " set "
+			+ "dict_id=#{dictId},dict_item_code=#{dictItemCode},dict_item_name=#{dictItemName},"+XJLMapper.FIX_UPDATE_FIELD + " where dict_item_id=#{dictItemId}")
+	public void update(XJLDomain domain);
 }

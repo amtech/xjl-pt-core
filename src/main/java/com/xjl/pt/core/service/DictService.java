@@ -24,7 +24,10 @@ public class DictService extends XJLService {
 	public void _delete(XJLDomain domain) {
 		this.dictMapper.delete(domain);
 	}
-
+	@Override
+	public void _modify(XJLDomain domain) {
+		this.dictMapper.update(domain);
+	}
 	@Override
 	public void _resetNewId(XJLDomain domain) {
 		((Dict)domain).setDictId(UUID.randomUUID().toString());

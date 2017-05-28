@@ -42,6 +42,10 @@ public class OrgService extends XJLService {
 		this.orgMapper.delete(domain);
 	}
 	@Override
+	public void _modify(XJLDomain domain) {
+		this.orgMapper.update(domain);
+	}
+	@Override
 	public void _resetNewId(XJLDomain domain) {
 		((Org)domain).setOrg(UUID.randomUUID().toString());
 	}

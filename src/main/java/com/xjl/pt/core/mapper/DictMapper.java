@@ -32,4 +32,7 @@ public interface DictMapper {
 	public Dict selectById(String dictId);
 	@Delete("update " + TABLE_NAME + " set "+XJLMapper.FIX_DELETE_FIELD + " where dict_id=#{dictId}")
 	public void delete(XJLDomain domain);
+	@Delete("update " + TABLE_NAME + " set "
+			+ "dict_name=#{dictName},"+XJLMapper.FIX_UPDATE_FIELD + " where dict_id=#{dictId}")
+	public void update(XJLDomain domain);
 }

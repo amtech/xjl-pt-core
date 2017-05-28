@@ -73,6 +73,7 @@ public class XJLMapper {
 	public static final String FIX_INSERT_FIELD="org,master,create_date,create_user_id,state";
 	public static final String FIX_INSERT_VALUE="#{org},#{master},#{createDate},#{createUserId},#{state}";
 	public static final String FIX_DELETE_FIELD="cancel_date=#{cancelDate},cancel_user_id=#{cancelUserId},state=#{state}";
+	public static final String FIX_UPDATE_FIELD="cancel_date=#{cancelDate},cancel_user_id=#{cancelUserId}";
 	public static final String FIX_SELECT_FIELD="org as org,master as master,create_date as createDate,create_user_id as createUserId,cancel_date as cancelDate,cancel_user_id as cancelUserId,state as state";
 	
 }

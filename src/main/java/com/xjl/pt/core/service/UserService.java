@@ -36,7 +36,10 @@ public class UserService extends XJLService {
 	public void _delete(XJLDomain domain) {
 		this.userMapper.delete(domain);
 	}
-
+	@Override
+	public void _modify(XJLDomain domain) {
+		this.userMapper.update(domain);
+	}
 	@Override
 	public void _resetNewId(XJLDomain domain) {
 		((User)domain).setUserId(UUID.randomUUID().toString());

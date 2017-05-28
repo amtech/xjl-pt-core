@@ -53,9 +53,14 @@ public class UserInfoService extends XJLService {
 	}
 	
 	/**
-	 * 上传证件照片存入数据库
+	 * 上传证件照片存入数据库,这个方法不要重写，后端会统一做一些事情，如果仅仅是更新图片，可以更加一个modifyPhoto的方法
+	 * @deprecated 没有修改者用户，请参考父类中的modify方法（domain，user）
 	 */
 	public void modify(XJLDomain domain){
 		this.userInfoMapper.updatePhoto(domain);
+	}
+	@Override
+	public void _modify(XJLDomain domain) {
+		this.userInfoMapper.update(domain);
 	}
 }

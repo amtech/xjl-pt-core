@@ -28,6 +28,15 @@ public interface UserInfoMapper {
 	 */
 	@Update("update  "+TABLE_NAME+" set  hand_shot_photo_uri=#{handShotPhotoUrl},hand_card_photo_uri=#{handCardPhotoUrl},card_back_photo_uri=#{cardBackPhotoUrl} where cardno = #{cardNo}")
 	public void updatePhoto(XJLDomain domain);
+	@Update("update  "+TABLE_NAME+" set  "
+			+ "user_id=#{userid},card_no=#{cardno},phone_no=#{phoneno},"
+			+ "hand_shot_photo_uri=#{handShotPhotoUrl},hand_card_photo_uri=#{handCardPhotoUrl},"
+			+ "card_back_photo_uri=#{cardBackPhotoUrl},auth_state=#{authState},"
+			+ "card_name=#{cardName} ,card_front_photo_uri=#{cardFrontPhotoUrl},"
+			+ "auth_date=#{authDate},auth_user_id=#{authUserId},"
+			+ "auth_channel_type=#{authChannelType},auth_channel_name=#{authChannelName}"
+			+ " where cardno = #{cardNo}")
+	public void update(XJLDomain domain);
 	/** 
 	 * 得到用户信息
 	 * @param cardNo

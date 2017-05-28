@@ -22,6 +22,9 @@ public interface OrgMapper {
 	public List<Org> select();
 	@Delete("update xjl_pt_org set " + XJLMapper.FIX_DELETE_FIELD + " where org=#{org}")
 	public void delete(XJLDomain org);
+	@Delete("update xjl_pt_org set "
+			+ "org_name=#{orgName}," + XJLMapper.FIX_UPDATE_FIELD + " where org=#{org}")
+	public void update(XJLDomain org);
 	@Select("select org_name as orgName, "
 			+ XJLMapper.FIX_SELECT_FIELD + " from xjl_pt_org where org=#{org}")
 	public Org selectById(String org);
