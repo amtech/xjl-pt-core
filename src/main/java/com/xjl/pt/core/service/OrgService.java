@@ -21,6 +21,7 @@ import com.xjl.pt.core.mapper.OrgMapper;
 public class OrgService extends XJLService {
 	@Autowired
 	private OrgMapper orgMapper;
+	/**
 	@Override
 	public void add(XJLDomain domain, User user) {
 		//不设置org，使用原始的号码
@@ -33,6 +34,7 @@ public class OrgService extends XJLService {
 		domain.setState(XJLDomain.StateType.A.name());
 		_add(domain);
 	}
+	*/
 	@Override
 	public void _add(XJLDomain domain) {
 		this.orgMapper.insert(domain);

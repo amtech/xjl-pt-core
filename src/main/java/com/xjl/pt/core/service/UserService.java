@@ -14,6 +14,7 @@ import com.xjl.pt.core.mapper.UserMapper;
 public class UserService extends XJLService {
 	@Autowired
 	private UserMapper userMapper;
+	/**
 	@Override
 	public void add(XJLDomain domain, User user) {
 		if (StringUtils.isBlank(domain.getOrg())){
@@ -27,6 +28,7 @@ public class UserService extends XJLService {
 		domain.setState(XJLDomain.StateType.A.name());
 		_add(domain);
 	}
+	*/
 	@Override
 	public void _add(XJLDomain domain) {
 		this.userMapper.insert(domain);

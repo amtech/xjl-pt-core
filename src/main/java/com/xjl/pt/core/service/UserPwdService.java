@@ -17,6 +17,7 @@ public class UserPwdService extends XJLService  {
 
 	@Autowired
 	private UserPwdMapper userPwdMapper;
+	/**
 	@Override
 	public void add(XJLDomain domain, User user) {
 		//if (StringUtils.isBlank(domain.getOrg())){
@@ -29,6 +30,7 @@ public class UserPwdService extends XJLService  {
 		domain.setState(XJLDomain.StateType.A.name());
 		_add(domain);
 	}
+	*/
 	@Override
 	public void _add(XJLDomain domain) {
 		this.userPwdMapper.insert(domain);
