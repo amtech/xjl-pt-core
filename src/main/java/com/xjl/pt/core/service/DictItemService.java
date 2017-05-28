@@ -7,17 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
-import com.xjl.pt.core.domain.DictValue;
+import com.xjl.pt.core.domain.DictItem;
 import com.xjl.pt.core.domain.XJLDomain;
-import com.xjl.pt.core.mapper.DictValueMapper;
+import com.xjl.pt.core.mapper.DictItemMapper;
 @Service
-public class DictValueService extends XJLService {
+public class DictItemService extends XJLService {
 	@Autowired
-	private DictValueMapper dictValueMapper;
+	private DictItemMapper dictItemMapper;
 	
 	@Override
 	public void _add(XJLDomain domain) {
-		this.dictValueMapper.insert(domain);
+		this.dictItemMapper.insert(domain);
 	}
 
 	@Override
@@ -27,16 +27,16 @@ public class DictValueService extends XJLService {
 
 	@Override
 	public void _resetNewId(XJLDomain domain) {
-		((DictValue)domain).setDictValueId(UUID.randomUUID().toString());
+		((DictItem)domain).setDictItemId(UUID.randomUUID().toString());
 	}
 	/**
 	 * 根据dictId获取所有的字典项列表
 	 * @param dictId
 	 * @return
 	 */
-	public List<DictValue> queryByDictId(String dictId,int page, int pageSize){
+	public List<DictItem> queryByDictId(String dictId,int page, int pageSize){
 		PageHelper.startPage(page, pageSize);
-		return this.dictValueMapper.selectByDictId(dictId);
+		return this.dictItemMapper.selectByDictId(dictId);
 	}
 	/**
 	 * 查询字典值
@@ -46,9 +46,9 @@ public class DictValueService extends XJLService {
 	 * @param pageSize
 	 * @return
 	 */
-	public List<DictValue> queryByDictId(String dictId,String search, int page, int pageSize){
+	public List<DictItem> queryByDictId(String dictId,String search, int page, int pageSize){
 		PageHelper.startPage(page, pageSize);
-		return this.dictValueMapper.selectByDictIdWithSearch(dictId,search);
+		return this.dictItemMapper.selectByDictIdWithSearch(dictId,search);
 	}
 	/**
 	 * 根据dictId获取值的数量
@@ -56,6 +56,6 @@ public class DictValueService extends XJLService {
 	 * @return
 	 */
 	public int countByDictId(String dictId){
-		return this.dictValueMapper.selectCountByDictId(dictId);
+		return this.dictItemMapper.selectCountByDictId(dictId);
 	}
 }
