@@ -2,6 +2,7 @@ package com.xjl.pt.core.tools;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.swing.table.TableRowSorter;
 
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.xjl.pt.core.domain.Table;
+import com.xjl.pt.core.domain.TableField;
+import com.xjl.pt.core.service.TableFieldService;
 import com.xjl.pt.core.service.TableService;
 
 /**
@@ -25,93 +28,62 @@ public class CoderTools {
 	private static Log log = LogFactory.getLog(CoderTools.class);
 	@Autowired
 	private TableService tableService;
+	@Autowired
+	private TableFieldService tableFieldService;
 	/**
 	 * 生成servcie/domain/mapper
 	 * @param tableName
 	 */
-	public void generateSDM(String tableName){
-		
-	}
-	public void generateDomain(String tableName,String basePackageName){
+	public void generateSDM(String tableName, String basePackageName){
 		log.debug("tableName:" + tableName + " basePackageName:" + basePackageName);
 		Table table = this.tableService.queryByName(tableName);
 		log.debug("table:" + table);
-		String tableShortName = this.getShortName(tableName);
+		List<TableField> fieldList = this.tableFieldService.queryByTableId(table.getTableId(), 1, 100);
+		String tableShortName = XJLCoderTools.getShortName(tableName);
 		log.debug("tableShortName:" + tableShortName);
-		String domainName = this.getDomainName(tableShortName);
+		String domainName = XJLCoderTools.getDomainName(tableShortName);
 		log.debug("domainName:" + domainName);
 		String domainPackageName = basePackageName+".domain";
 		log.debug("domainPackageName:" + domainPackageName);
 		String className = domainPackageName + "." + domainName;
 		log.debug("className:" + className);
-		File domainFile = this.getClassFile(className);
-		this.forceCreateFile(domainFile);
+		File domainFile = generateDomainFile(table, fieldList, domainName, domainPackageName, className);
+		generateMapperFile(table, fieldList, domainName, domainPackageName, domainFile);
+	}
+	private void generateMapperFile(Table table, List<TableField> fieldList, String domainName,
+			String domainPackageName, File domainFile) {
+		log.debug("开始创建mapper文件");
+		File mapperRoot = new File(domainFile.getParentFile().getParentFile(),"mapper");
+		File mapperFile = new File(mapperRoot, domainName + "Mapper.java");
+		XJLCoderTools.forceCreateFile(mapperFile);
+		String mapperContent = MapperCoderTools.generateMapperContent(domainPackageName, domainName, table, fieldList);
+		try {
+			log.debug("写入mapperContent内容");
+			FileUtils.write(mapperFile, mapperContent);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	private File generateDomainFile(Table table, List<TableField> fieldList, String domainName,
+			String domainPackageName, String className) {
+		File domainFile = XJLCoderTools.getClassFile(className);
+		XJLCoderTools.forceCreateFile(domainFile);
 		log.debug("强制创建文件成功");
-		String domainContent = DomainCoderTools.generateDomainContent(domainPackageName, domainName, table.getTableDesc());
+		String domainContent = DomainCoderTools.generateDomainContent(domainPackageName, domainName, table.getTableDesc(),fieldList);
 		try {
 			log.debug("写入domainContent内容");
 			FileUtils.write(domainFile, domainContent);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+		return domainFile;
 	}
+	
 	public void generateController(String tableName){
 		
 	}
 	public void generatePage(String tableName){
 		
 	}
-	public String getShortName(String tableName){
-		String lowerName = tableName.toLowerCase();
-		if (lowerName.startsWith("xjl_pt_")){
-			lowerName = StringUtils.substringAfter(lowerName, "xjl_pt_");
-		}
-		if (lowerName.startsWith("xjl_")){
-			lowerName = StringUtils.substringAfter(lowerName, "xjl_");
-		}
-		return lowerName;
-	}
-	public String getDomainName(String tableName){
-		String shortName = this.getShortName(tableName);
-		String[] keys = StringUtils.split(shortName,"_");
-		StringBuffer sb = new StringBuffer();
-		for (String key : keys) {
-			sb.append(StringUtils.capitalize(key));
-		}
-		return sb.toString();
-	}
-	public String getDomainFieldName(String fieldName){
-		String shortName = this.getShortName(fieldName);
-		String[] keys = StringUtils.split(shortName,"_");
-		StringBuffer sb = new StringBuffer();
-		for (String key : keys) {
-			if (sb.length() == 0){
-				sb.append(key);
-			} else {
-				sb.append(StringUtils.capitalize(key));
-			}
-		}
-		return sb.toString();
-	}
-	public File getClassFile(String className){
-		
-		File rootPath = FileUtils.getFile("src/main/java");
-		String classPath[] = StringUtils.split(className, ".");
-		classPath[classPath.length-1] += ".java";
-		File classFile = rootPath;
-		for (String path : classPath) {
-			classFile = new File(classFile, path);
-		}
-		return classFile;
-	}
-	public void forceCreateFile(File file){
-		if (file.exists()){
-			try {
-			FileUtils.forceMkdir(file.getParentFile());
-			file.createNewFile();
-			} catch (Exception e){
-				throw new RuntimeException(e);
-			}
-		} 
-	}
+	
 }

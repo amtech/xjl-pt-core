@@ -17,30 +17,30 @@ public class CoderToolsTest {
 	@Test
 	public void getShortName(){
 		String tableName = "xjl_pt_service_item";
-		String shortName = this.coderTools.getShortName(tableName);
+		String shortName = XJLCoderTools.getShortName(tableName);
 		Assert.assertEquals("service_item", shortName);
 	}
 	@Test
 	public void getDomainName(){
 		String tableName = "xjl_pt_service_Item";
-		String domainName = this.coderTools.getDomainName(tableName);
+		String domainName = XJLCoderTools.getDomainName(tableName);
 		Assert.assertEquals("ServiceItem", domainName);
 	}
 	@Test
 	public void getDomainFieldName(){
 		String fieldName = "id";
-		String domainFieldName = this.coderTools.getDomainFieldName(fieldName);
+		String domainFieldName = XJLCoderTools.getDomainFieldName(fieldName);
 		Assert.assertEquals("id", domainFieldName);
-		Assert.assertEquals("tableName", this.coderTools.getDomainFieldName("table_name"));
+		Assert.assertEquals("tableName", XJLCoderTools.getDomainFieldName("table_name"));
 	}
 	@Test
 	public void getClassFile(){
 		String className = "com.xjl.pt.core.domain.Abc";
-		File classFile = this.coderTools.getClassFile(className);
+		File classFile = XJLCoderTools.getClassFile(className);
 		System.out.println(classFile.getAbsolutePath());
 	}
 	@Test
 	public void generateDomain(){
-		this.coderTools.generateDomain("xjl_pt_dept", "com.xjl.pt.core");
+		this.coderTools.generateSDM("xjl_pt_dept", "com.xjl.pt.core");
 	}
 }

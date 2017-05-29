@@ -6,14 +6,13 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
+import com.xjl.pt.core.domain.Table;
+import com.xjl.pt.core.domain.XJLDomain;
 /**
  * 表
  * @author lilisheng
  *
  */
-
-import com.xjl.pt.core.domain.Table;
-import com.xjl.pt.core.domain.XJLDomain;
 @Repository
 public interface TableMapper {
 	public static final String TABLE_NAME="XJL_PT_TABLE";
