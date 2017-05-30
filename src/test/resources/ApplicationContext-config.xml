@@ -12,6 +12,7 @@
     <!-- 配置org -->  
     <bean id="xjlConfig"  
         class="com.xjl.pt.core.config.XJLConfig">  
+        <property name="org" value="06245e00-0321-4db5-b555-03fb077699c1"></property>
         <property name="orgName" value="xjl市"/>  
     </bean> 
 </beans>

@@ -11,6 +11,7 @@ import com.xjl.pt.core.config.XJLConfig;
 import com.xjl.pt.core.domain.DataLog;
 import com.xjl.pt.core.domain.Org;
 import com.xjl.pt.core.domain.User;
+import com.xjl.pt.core.domain.UserLog;
 import com.xjl.pt.core.domain.XJLDomain;
 /**
  * 服务类通用方法
@@ -32,11 +33,11 @@ public abstract class XJLBaseService {
 			domain.setCreateUserId(null);
 			domain.setCreateDate(null);
 		} else {
-			//如果是用户的实例，是要添加用户
-			if (domain instanceof User){
+			//如果是用户的实例，是要添加用户,如果是用户日志，允许记录游客
+			if (domain instanceof User || domain instanceof UserLog){
 				if (user == null){
 					//用户自己注册
-					domain.setOrg(xjlConfig.getOrgId());
+					domain.setOrg(xjlConfig.getOrg());
 					domain.setCreateUserId(null);
 					domain.setCreateDate(null);
 				}  else {

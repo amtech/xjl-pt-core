@@ -8,13 +8,14 @@ public class XJLConfig {
 	/**
 	 * 一个应用一个org，也即是支持saas多租户，每一个租户单独不用一套应用（公用一套数据库）
 	 */
-	private String orgId;
+	private String org;
 	private String orgName;
-	public String getOrgId() {
-		return orgId;
+	
+	public String getOrg() {
+		return org;
 	}
-	public void setOrgId(String orgId) {
-		this.orgId = orgId;
+	public void setOrg(String org) {
+		this.org = org;
 	}
 	public String getOrgName() {
 		return orgName;
