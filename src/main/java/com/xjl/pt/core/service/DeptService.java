@@ -34,9 +34,13 @@ public class DeptService extends XJLService {
 	public void _modify(XJLDomain domain) {
 		this.deptmapper.update(domain);
 	}
-	public List<Dept> query(int page, int pageSize) {
-		PageHelper.startPage(page, pageSize);
-		return this.deptmapper.selectAll();
+	public List<Dept> query(String search, int page, int pageSize) {
+		if (StringUtils.isEmpty(search)){
+			PageHelper.startPage(page, pageSize);
+			return this.deptmapper.selectAll();
+		} else {
+			throw new RuntimeException("带search值的查询还没有实现");
+		}
 	}
 	public Dept queryById(String deptId) {
 		return this.deptmapper.selectById(deptId);

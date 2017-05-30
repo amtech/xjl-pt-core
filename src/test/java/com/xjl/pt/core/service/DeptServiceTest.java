@@ -27,13 +27,13 @@ public class DeptServiceTest {
 	}
 	@Test
 	public void delete(){
-		List<Dept> list = this.deptService.query(1,1);
+		List<Dept> list = this.deptService.query(null, 1,1);
 		User user = this.userService.queryFixUser();
 		this.deptService.delete(list.get(0), user);
 	}
 	@Test
 	public void modify(){
-		List<Dept> list = this.deptService.query(1,1);
+		List<Dept> list = this.deptService.query(null, 1,1);
 		User user = this.userService.queryFixUser();
 		list.get(0).setDeptName("审批件3");
 		this.deptService.modify(list.get(0), user);

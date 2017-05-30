@@ -3,6 +3,7 @@ package com.xjl.pt.core.tools;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -83,9 +84,13 @@ public class ServiceCoderTools {
 	}
 	private static String query(String mapperName,String domainName){
 		StringBuffer sb = new StringBuffer();
-		sb.append("\tpublic List<" + domainName + "> query(int page, int pageSize) {\r\n");
-		sb.append("\t\tPageHelper.startPage(page, pageSize);\r\n");
-		sb.append("\t\treturn this." + XJLCoderTools.getDomainFieldName(mapperName) + ".selectAll();\r\n");
+		sb.append("\tpublic List<" + domainName + "> query(String search, int page, int pageSize) {\r\n");
+		sb.append("\t\tif (StringUtils.isEmpty(search)){\r\n");
+		sb.append("\t\t\tPageHelper.startPage(page, pageSize);\r\n");
+		sb.append("\t\t\treturn this." + XJLCoderTools.getDomainFieldName(mapperName) + ".selectAll();\r\n");
+		sb.append("\t\t} else {\r\n");
+		sb.append("\t\t\tthrow new RuntimeException(\"带search值的查询还没有实现\");\r\n");
+		sb.append("\t\t}\r\n");
 		sb.append("\t}\r\n");
 		return sb.toString();
 	}
