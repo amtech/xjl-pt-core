@@ -7,28 +7,33 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.xjl.pt.core.config.XJLConfig;
 import com.xjl.pt.core.domain.User;
 import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.core.mapper.UserMapper;
 @Service
 public class UserService extends XJLService {
 	@Autowired
+	private XJLConfig xjlConfig;
+	@Autowired
 	private UserMapper userMapper;
-	/**
 	@Override
-	public void add(XJLDomain domain, User user) {
-		if (StringUtils.isBlank(domain.getOrg())){
-			throw new RuntimeException("用户的org不能为空");
+	protected void _preDomain(XJLDomain domain, User user) {
+		if (user == null){
+			//用户自己注册
+			domain.setOrg(this.xjlConfig.getOrg());
+			domain.setCreateUserId(null);
+			domain.setCreateDate(Calendar.getInstance().getTime());
+		} else {
+			domain.setOrg(user.getOrg());
+			domain.setCreateUserId(user.getUserId());
+			domain.setCreateDate(Calendar.getInstance().getTime());
 		}
-//		domain.setOrg(user.getOrg());
-		domain.setCreateUserId(user.getUserId());
-		domain.setCreateDate(Calendar.getInstance().getTime());
+		domain.setMaster(UUID.randomUUID().toString());
 		domain.setCancelDate(null);
 		domain.setCancelUserId(null);
 		domain.setState(XJLDomain.StateType.A.name());
-		_add(domain);
 	}
-	*/
 	@Override
 	public void _add(XJLDomain domain) {
 		this.userMapper.insert(domain);

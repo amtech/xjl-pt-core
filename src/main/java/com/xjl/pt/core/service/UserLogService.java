@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 
+import com.xjl.pt.core.config.XJLConfig;
+import com.xjl.pt.core.domain.User;
 import com.xjl.pt.core.domain.UserLog;
 import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.core.mapper.UserLogMapper;
@@ -16,7 +18,8 @@ import com.xjl.pt.core.mapper.UserLogMapper;
  */
 @Service
 public class UserLogService  extends XJLService   {
-	
+	@Autowired
+	private XJLConfig xjlConfig;
 	@Autowired
 	private UserLogMapper userLogMapper;
 	
@@ -24,7 +27,23 @@ public class UserLogService  extends XJLService   {
 		System.out.println(this.userLogMapper);
 	}
 
-
+	@Override
+	protected void _preDomain(XJLDomain domain, User user) {
+		if (user == null){
+			//游客日志
+			domain.setOrg(this.xjlConfig.getOrg());
+			domain.setCreateUserId(null);
+			domain.setCreateDate(Calendar.getInstance().getTime());
+		} else {
+			domain.setOrg(user.getOrg());
+			domain.setCreateUserId(user.getUserId());
+			domain.setCreateDate(Calendar.getInstance().getTime());
+		}
+		domain.setMaster(UUID.randomUUID().toString());
+		domain.setCancelDate(null);
+		domain.setCancelUserId(null);
+		domain.setState(XJLDomain.StateType.A.name());
+	}
 	@Override
 	public void _add(XJLDomain domain) {
 		// TODO Auto-generated method stub

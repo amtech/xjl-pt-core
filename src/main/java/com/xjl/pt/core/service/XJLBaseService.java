@@ -19,46 +19,30 @@ import com.xjl.pt.core.domain.XJLDomain;
  *
  */
 public abstract class XJLBaseService {
-	@Autowired
-	private XJLConfig xjlConfig;
+	
 	/**
 	 * 设置固定字段的值，对org和user的添加做了处理
 	 * @param domain
 	 * @param user
 	 */
 	public void add(XJLDomain domain, User user){
-		//如果是添加org，则不做orgId的设置
-		if (domain instanceof Org){
-			domain.setOrg(null);
-			domain.setCreateUserId(null);
-			domain.setCreateDate(null);
-		} else {
-			//如果是用户的实例，是要添加用户,如果是用户日志，允许记录游客
-			if (domain instanceof User || domain instanceof UserLog){
-				if (user == null){
-					//用户自己注册
-					domain.setOrg(xjlConfig.getOrg());
-					domain.setCreateUserId(null);
-					domain.setCreateDate(null);
-				}  else {
-					//有其他人添加的用户
-					domain.setOrg(user.getOrg());
-					domain.setCreateUserId(user.getUserId());
-					domain.setCreateDate(Calendar.getInstance().getTime());
-				}
-			} else {
-				//用户不能为空，记录当前数据的org为用户的org
-				domain.setOrg(user.getOrg());
-				domain.setCreateUserId(user.getUserId());
-				domain.setCreateDate(Calendar.getInstance().getTime());
-			}
-		}
+		_preDomain(domain, user);
+		this._resetNewId(domain);
+		_add(domain);
+	}
+	/**
+	 * 默认的预处理方法，设置7个变量
+	 * @param domain
+	 * @param user
+	 */
+	protected void _preDomain(XJLDomain domain, User user) {
+		domain.setOrg(user.getOrg());
+		domain.setCreateUserId(user.getUserId());
+		domain.setCreateDate(Calendar.getInstance().getTime());
 		domain.setMaster(UUID.randomUUID().toString());
 		domain.setCancelDate(null);
 		domain.setCancelUserId(null);
 		domain.setState(XJLDomain.StateType.A.name());
-		this._resetNewId(domain);
-		_add(domain);
 	}
 	/**
 	 * 每个之类自己实现具体往数据中添加的方法

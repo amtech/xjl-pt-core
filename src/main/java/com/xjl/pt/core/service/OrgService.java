@@ -22,6 +22,17 @@ public class OrgService extends XJLService {
 	@Autowired
 	private OrgMapper orgMapper;
 	@Override
+	protected void _preDomain(XJLDomain domain, User user) {
+		if (user != null){
+			domain.setCreateUserId(user.getUserId());
+			domain.setCreateDate(Calendar.getInstance().getTime());
+		}
+		domain.setMaster(UUID.randomUUID().toString());
+		domain.setCancelDate(null);
+		domain.setCancelUserId(null);
+		domain.setState(XJLDomain.StateType.A.name());
+	}
+	@Override
 	public void _add(XJLDomain domain) {
 		this.orgMapper.insert(domain);
 	}
