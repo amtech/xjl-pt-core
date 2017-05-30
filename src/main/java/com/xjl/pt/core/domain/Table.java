@@ -1,10 +1,13 @@
 package com.xjl.pt.core.domain;
 
+import com.xjl.pt.core.annotation.TableDB;
+
 /**
  * 业务表定义
  * @author lilisheng
  *
  */
+@TableDB(name="xjl_pt_table")
 public class Table extends XJLDomain{
 	private String tableId;
 	private String tableName;

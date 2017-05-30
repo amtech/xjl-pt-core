@@ -1,5 +1,8 @@
 package com.xjl.pt.core.domain;
 
+import com.xjl.pt.core.annotation.TableDB;
+
+@TableDB(name="xjl_pt_user")
 public class User extends XJLDomain{
 	private String userId;
 	private String userName;

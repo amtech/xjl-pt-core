@@ -2,11 +2,14 @@ package com.xjl.pt.core.domain;
 
 import java.util.Date;
 
+import com.xjl.pt.core.annotation.TableDB;
+
 /**
  * 用户信息实体类
  * @author guan.zheyuan
  *
  */
+@TableDB(name="xjl_pt_user_info")
 public class UserInfo extends XJLDomain {
 	
 	

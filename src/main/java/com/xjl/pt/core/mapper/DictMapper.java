@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.xjl.pt.core.domain.Dict;
@@ -30,8 +31,8 @@ public interface DictMapper {
 	
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where dict_id=#{dictId}")
 	public Dict selectById(String dictId);
-	@Delete("update " + TABLE_NAME + " set "+XJLMapper.FIX_DELETE_FIELD + " where dict_id=#{dictId}")
+	@Update("update " + TABLE_NAME + " set "+XJLMapper.FIX_DELETE_FIELD + " where dict_id=#{dictId}")
 	public void delete(XJLDomain domain);
-	@Delete("update " + TABLE_NAME + " set " + UPDATE_FIELD + " where dict_id=#{dictId}")
+	@Update("update " + TABLE_NAME + " set " + UPDATE_FIELD + " where dict_id=#{dictId}")
 	public void update(XJLDomain domain);
 }

@@ -1,9 +1,13 @@
 package com.xjl.pt.core.domain;
+
+import com.xjl.pt.core.annotation.TableDB;
+
 /**
  * 字典值
  * @author li.lisheng
  *
  */
+@TableDB(name="xjl_pt_dict_item")
 public class DictItem extends XJLDomain{
 	private String dictId;
 	private String dictItemId;

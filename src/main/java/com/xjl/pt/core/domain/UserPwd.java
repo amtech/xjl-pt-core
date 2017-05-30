@@ -1,8 +1,11 @@
 package com.xjl.pt.core.domain;
+
+import com.xjl.pt.core.annotation.TableDB;
+
 /**
- * 用户密码信息
  * @author guan.zheyuan
  */
+@TableDB(name="xjl_pt_user_password")
 public class UserPwd extends XJLDomain {
 
 	private String userId;

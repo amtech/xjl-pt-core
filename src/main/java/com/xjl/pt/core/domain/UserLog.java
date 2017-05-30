@@ -1,9 +1,12 @@
 package com.xjl.pt.core.domain;
 
+import com.xjl.pt.core.annotation.TableDB;
+
 /**
  * 用户日志信息
  * @author guan.zheyuan
  */
+@TableDB(name="xjl_pt_user_log")
 public class UserLog  extends XJLDomain {
 
 	/**

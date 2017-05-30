@@ -2,11 +2,14 @@ package com.xjl.pt.core.domain;
 
 import java.util.Date;
 
+import com.xjl.pt.core.annotation.TableDB;
+
 /**
  * 数据日志表
  * @author lilisheng
  *
  */
+@TableDB(name="xjl_pt_data_log")
 public class DataLog extends XJLDomain {
 	private String tableName;
 	private String masterValue;

@@ -11,6 +11,11 @@ import com.github.pagehelper.PageHelper;
 import com.xjl.pt.core.domain.Dict;
 import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.core.mapper.DictMapper;
+/**
+ * 字典
+ * @author lilisheng
+ *
+ */
 @Service
 public class DictService extends XJLService {
 	@Autowired

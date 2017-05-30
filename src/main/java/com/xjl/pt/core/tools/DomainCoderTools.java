@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.xjl.pt.core.annotation.TableDB;
+import com.xjl.pt.core.domain.Table;
 import com.xjl.pt.core.domain.TableField;
 import com.xjl.pt.core.domain.XJLDomain;
 /**
@@ -12,17 +14,20 @@ import com.xjl.pt.core.domain.XJLDomain;
  *
  */
 public class DomainCoderTools {
-	public static final String generateDomainContent(String domainPackage, String domainName,String domainDesc,List<TableField> fieldList){
+	public static final String generateDomainContent(String domainPackage, String domainName,Table table,List<TableField> fieldList){
 		StringBuffer sb = new StringBuffer();
 		StringBuffer setgetSb = new StringBuffer();
 		sb.append("package "+domainPackage +";\r\n");
 		sb.append("import com.xjl.pt.core.domain.XJLDomain;\r\n");
+		sb.append("import com.xjl.pt.core.annotation.FieldDB;\r\n");
+		sb.append("import com.xjl.pt.core.annotation.TableDB;\r\n");
 		sb.append("import java.util.Date;\r\n");
 		sb.append("/**\r\n");
-		sb.append("* " + domainDesc + "\r\n");
+		sb.append("* " + table.getTableDesc() + "\r\n");
 		sb.append("* @author DomainCoderTools\r\n");
 		sb.append("*\r\n");
 		sb.append("*/\r\n");
+		sb.append("@TableDB(name=\"" + table.getTableName() + "\")");
 		sb.append("public class " + domainName + " extends XJLDomain {\r\n");
 		for (TableField tableField : fieldList) {
 			String domainFieldType = XJLCoderTools.getDomainFieldType(tableField.getFieldType());

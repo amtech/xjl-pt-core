@@ -49,6 +49,21 @@ public class CoderTools {
 		log.debug("className:" + className);
 		File domainFile = generateDomainFile(table, fieldList, domainName, domainPackageName, className);
 		generateMapperFile(table, fieldList, domainName, domainPackageName, domainFile);
+		generateServiceFile(table, fieldList, domainName, domainPackageName, domainFile);
+	}
+	private void generateServiceFile(Table table, List<TableField> fieldList, String domainName,
+			String domainPackageName, File domainFile) {
+		log.debug("开始创建service文件");
+		File serviceRoot = new File(domainFile.getParentFile().getParentFile(),"service");
+		File serviceFile = new File(serviceRoot, domainName + "Service.java");
+		XJLCoderTools.forceCreateFile(serviceFile);
+		String serviceContent = ServiceCoderTools.generateServiceContent(domainPackageName, domainName, table, fieldList);
+		try {
+			log.debug("写入mapperContent内容");
+			FileUtils.write(serviceFile, serviceContent);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	private void generateMapperFile(Table table, List<TableField> fieldList, String domainName,
 			String domainPackageName, File domainFile) {
@@ -69,7 +84,7 @@ public class CoderTools {
 		File domainFile = XJLCoderTools.getClassFile(className);
 		XJLCoderTools.forceCreateFile(domainFile);
 		log.debug("强制创建文件成功");
-		String domainContent = DomainCoderTools.generateDomainContent(domainPackageName, domainName, table.getTableDesc(),fieldList);
+		String domainContent = DomainCoderTools.generateDomainContent(domainPackageName, domainName, table,fieldList);
 		try {
 			log.debug("写入domainContent内容");
 			FileUtils.write(domainFile, domainContent);

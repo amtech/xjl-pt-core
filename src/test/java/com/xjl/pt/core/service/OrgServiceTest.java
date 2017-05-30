@@ -22,10 +22,10 @@ public class OrgServiceTest {
 	private UserService userService;
 	@Test
 	public void add(){
-		User user = this.userService.queryById("c97106eb-65a2-4063-8ed9-43bb96016278");
+		User user = this.userService.queryFixUser();
 		Org org = new Org();
 		org.setOrg(UUID.randomUUID().toString());
-		org.setOrgName("测试市");
+		org.setOrgName("测试市2");
 		this.orgService.add(org,user);
 	}
 	@Test

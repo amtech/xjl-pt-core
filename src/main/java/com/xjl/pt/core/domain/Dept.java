@@ -1,12 +1,14 @@
 package com.xjl.pt.core.domain;
 import com.xjl.pt.core.domain.XJLDomain;
+import com.xjl.pt.core.annotation.FieldDB;
+import com.xjl.pt.core.annotation.TableDB;
 import java.util.Date;
 /**
 * 部门表
 * @author DomainCoderTools
 *
 */
-public class Dept extends XJLDomain {
+@TableDB(name="xjl_pt_dept")public class Dept extends XJLDomain {
 	//部门名称
 	private String deptName;
 	//部门id

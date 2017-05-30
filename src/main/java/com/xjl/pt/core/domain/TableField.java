@@ -1,11 +1,14 @@
 package com.xjl.pt.core.domain;
 
 import org.apache.commons.lang3.StringUtils;
+
+import com.xjl.pt.core.annotation.TableDB;
 /**
  * 表字段定义
  * @author lilisheng
  *
  */
+@TableDB(name="xjl_pt_table_field")
 public class TableField extends XJLDomain {
 	//字段id
 	private String fieldId;
