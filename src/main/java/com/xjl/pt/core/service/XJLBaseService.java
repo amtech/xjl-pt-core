@@ -7,7 +7,9 @@ import org.codehaus.jackson.JsonFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
+import com.xjl.pt.core.config.XJLConfig;
 import com.xjl.pt.core.domain.DataLog;
+import com.xjl.pt.core.domain.Org;
 import com.xjl.pt.core.domain.User;
 import com.xjl.pt.core.domain.XJLDomain;
 /**
@@ -16,16 +18,41 @@ import com.xjl.pt.core.domain.XJLDomain;
  *
  */
 public abstract class XJLBaseService {
+	@Autowired
+	private XJLConfig xjlConfig;
 	/**
-	 * 设置固定字段的值
+	 * 设置固定字段的值，对org和user的添加做了处理
 	 * @param domain
 	 * @param user
 	 */
 	public void add(XJLDomain domain, User user){
-		domain.setOrg(user.getOrg());
+		//如果是添加org，则不做orgId的设置
+		if (domain instanceof Org){
+			domain.setOrg(null);
+			domain.setCreateUserId(null);
+			domain.setCreateDate(null);
+		} else {
+			//如果是用户的实例，是要添加用户
+			if (domain instanceof User){
+				if (user == null){
+					//用户自己注册
+					domain.setOrg(xjlConfig.getOrgId());
+					domain.setCreateUserId(null);
+					domain.setCreateDate(null);
+				}  else {
+					//有其他人添加的用户
+					domain.setOrg(user.getOrg());
+					domain.setCreateUserId(user.getUserId());
+					domain.setCreateDate(Calendar.getInstance().getTime());
+				}
+			} else {
+				//用户不能为空，记录当前数据的org为用户的org
+				domain.setOrg(user.getOrg());
+				domain.setCreateUserId(user.getUserId());
+				domain.setCreateDate(Calendar.getInstance().getTime());
+			}
+		}
 		domain.setMaster(UUID.randomUUID().toString());
-		domain.setCreateUserId(user.getUserId());
-		domain.setCreateDate(Calendar.getInstance().getTime());
 		domain.setCancelDate(null);
 		domain.setCancelUserId(null);
 		domain.setState(XJLDomain.StateType.A.name());

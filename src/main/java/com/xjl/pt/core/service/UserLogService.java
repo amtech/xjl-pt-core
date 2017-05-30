@@ -13,10 +13,8 @@ import com.xjl.pt.core.mapper.UserLogMapper;
 /**
  * 用户日志基本业务类
  * @author guan.zheyuan
- *@deprecated 什么会有一个加载配置文件的操作
  */
 @Service
-@ContextConfiguration(locations = { "classpath*:/ApplicationContext-*.xml"})  
 public class UserLogService  extends XJLService   {
 	
 	@Autowired
@@ -25,22 +23,7 @@ public class UserLogService  extends XJLService   {
 	public  void print(){
 		System.out.println(this.userLogMapper);
 	}
-	/**
-	 * 设置固定字段的值
-	 * @deprecated ，domain就是一个userLog对象，为什么后面还有一个userLog对象？？？？
-	 * @param domain
-	 * @param user
-	 */
-	public void add(XJLDomain domain, UserLog userLog){
-		domain.setOrg(userLog.getOrg());
-		domain.setMaster(UUID.randomUUID().toString());
-		domain.setCreateUserId(userLog.getUserId());
-		domain.setCreateDate(Calendar.getInstance().getTime());
-		domain.setCancelDate(null);
-		domain.setCancelUserId(null);
-		domain.setState(XJLDomain.StateType.A.name());
-		_add(domain);
-	}
+
 
 	@Override
 	public void _add(XJLDomain domain) {
