@@ -29,6 +29,22 @@ public class UserInfoService extends XJLService {
 		// TODO Auto-generated method stub
 	}
 	/**
+	 * 根据userid更新用户的phoneno
+	 * @param domain
+	 */
+	public void updatePhone(XJLDomain domain){
+		this.userInfoMapper.updatePhone(domain);
+	}
+	
+	/**
+	 * 插入userid，手持身份证正面照HandCardPhotoUrl地址
+	 * @param domain
+	 */
+	public void insertHandCardPhotoUrl(XJLDomain domain){
+		this.userInfoMapper.insertHandCardPhotoUrl(domain);
+	}
+	
+	/**
 	 * 根据身份证号码获取信息
 	 */
 	public UserInfo queryByCardNo(String cardNo){

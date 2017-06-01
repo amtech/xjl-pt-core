@@ -23,6 +23,10 @@ public interface UserInfoMapper {
 	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,"+XJLMapper.FIX_INSERT_FIELD+")"
 			+"values(#{userId},#{cardNo},#{phoneNo},"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
+	
+	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,hand_card_photo_uri,"+XJLMapper.FIX_INSERT_FIELD+")"
+			+"values(#{userId},#{cardNo},#{phoneNo},#{handCardPhotoUrl},"+XJLMapper.FIX_INSERT_VALUE+")")
+	public void insertHandCardPhotoUrl(XJLDomain domain);
 	/**
 	 * 更新
 	 */
@@ -37,6 +41,9 @@ public interface UserInfoMapper {
 			+ "auth_channel_type=#{authChannelType},auth_channel_name=#{authChannelName}"
 			+ " where cardno = #{cardNo}")
 	public void update(XJLDomain domain);
+	
+	@Update("update "+TABLE_NAME+" set  phone_no=#{phoneNo} where user_id=#{userId}")
+	public void updatePhone(XJLDomain domain);
 	/** 
 	 * 得到用户信息
 	 * @param cardNo

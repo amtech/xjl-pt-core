@@ -81,4 +81,5 @@ public abstract class XJLBaseService {
 	 * @param domain
 	 */
 	public abstract void _resetNewId(XJLDomain domain);
+	
 }
