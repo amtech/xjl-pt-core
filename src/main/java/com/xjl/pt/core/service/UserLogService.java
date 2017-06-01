@@ -4,8 +4,6 @@ import java.util.Calendar;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.ContextConfiguration;
-
 import com.xjl.pt.core.config.XJLConfig;
 import com.xjl.pt.core.domain.User;
 import com.xjl.pt.core.domain.UserLog;
@@ -61,7 +59,12 @@ public class UserLogService  extends XJLService   {
 	@Override
 	public void _resetNewId(XJLDomain domain) {
 		// TODO Auto-generated method stub
-		
 	}
+	/**
+	 * 得到最后一次登录日志
+	 */
+	public UserLog queryUserLogForMax(String userId){
+		return this.userLogMapper.selectForMax(userId);
+	};
 
 }
