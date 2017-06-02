@@ -44,6 +44,7 @@ public interface UserInfoMapper {
 	
 	@Update("update "+TABLE_NAME+" set  phone_no=#{phoneNo} where user_id=#{userId}")
 	public void updatePhone(XJLDomain domain);
+	
 	/** 
 	 * 得到用户信息
 	 * @param cardNo
