@@ -24,8 +24,8 @@ public interface UserInfoMapper {
 			+"values(#{userId},#{cardNo},#{phoneNo},"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
 	
-	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,hand_card_photo_uri,"+XJLMapper.FIX_INSERT_FIELD+")"
-			+"values(#{userId},#{cardNo},#{phoneNo},#{handCardPhotoUrl},"+XJLMapper.FIX_INSERT_VALUE+")")
+	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,hand_card_photo_uri,auth_channel_type,auth_channel_name,"+XJLMapper.FIX_INSERT_FIELD+")"
+			+"values(#{userId},#{cardNo},#{phoneNo},#{handCardPhotoUrl},'2','自助终端',"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insertHandCardPhotoUrl(XJLDomain domain);
 	/**
 	 * 更新
