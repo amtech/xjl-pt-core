@@ -30,7 +30,7 @@ public interface UserInfoMapper {
 	/**
 	 * 更新
 	 */
-	@Update("update  "+TABLE_NAME+" set  hand_shot_photo_uri=#{handShotPhotoUrl},hand_card_photo_uri=#{handCardPhotoUrl},card_back_photo_uri=#{cardBackPhotoUrl} where cardno = #{cardNo}")
+	@Update("update  "+TABLE_NAME+" set  hand_shot_photo_uri=#{handShotPhotoUrl},hand_card_photo_uri=#{handCardPhotoUrl},card_back_photo_uri=#{cardBackPhotoUrl} where card_no = #{cardNo}")
 	public void updatePhoto(XJLDomain domain);
 	@Update("update  "+TABLE_NAME+" set  "
 			+ "user_id=#{userid},card_no=#{cardno},phone_no=#{phoneno},"
@@ -39,7 +39,7 @@ public interface UserInfoMapper {
 			+ "card_name=#{cardName} ,card_front_photo_uri=#{cardFrontPhotoUrl},"
 			+ "auth_date=#{authDate},auth_user_id=#{authUserId},"
 			+ "auth_channel_type=#{authChannelType},auth_channel_name=#{authChannelName}"
-			+ " where cardno = #{cardNo}")
+			+ " where card_no = #{cardNo}")
 	public void update(XJLDomain domain);
 	
 	@Update("update "+TABLE_NAME+" set  phone_no=#{phoneNo} where user_id=#{userId}")
