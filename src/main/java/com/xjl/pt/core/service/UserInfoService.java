@@ -32,7 +32,7 @@ public class UserInfoService extends XJLService {
 	 * 根据userid更新用户的phoneno
 	 * @param domain
 	 */
-	public void updatePhone(XJLDomain domain){
+	public void modifyPhone(XJLDomain domain){
 		this.userInfoMapper.updatePhone(domain);
 	}
 	
@@ -40,7 +40,7 @@ public class UserInfoService extends XJLService {
 	 * 插入userid，手持身份证正面照HandCardPhotoUrl地址
 	 * @param domain
 	 */
-	public void insertHandCardPhotoUrl(XJLDomain domain){
+	public void addHandCardPhotoUrl(XJLDomain domain){
 		this.userInfoMapper.insertHandCardPhotoUrl(domain);
 	}
 	
