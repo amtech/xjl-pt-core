@@ -66,5 +66,8 @@ public class UserLogService  extends XJLService   {
 	public UserLog queryUserLogForMax(String userId){
 		return this.userLogMapper.selectForMax(userId);
 	};
-
+	@Override
+	protected void addDataLog(XJLDomain domain, User user, String operateType) {
+		//用户日志表的增删改不记录数据日志
+	}
 }
