@@ -50,7 +50,7 @@ public interface UserInfoMapper {
 	 * @param cardNo
 	 */
 	@Select("select "+USERINFO_SELECT_FIELD+" from "+TABLE_NAME+" where card_no =#{cardNo}")
-	public UserInfo selectByCardNo(String cardNo);
+	public UserInfo selectByCardNo(String cardNo); 
 	/**
 	 * 得到用户信息
 	 * @param phoneNo
