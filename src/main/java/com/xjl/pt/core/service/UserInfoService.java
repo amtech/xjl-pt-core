@@ -19,6 +19,7 @@ public class UserInfoService extends XJLService {
 	public void _add(XJLDomain domain) {
 		 this.userInfoMapper.insert(domain);
 	}
+	
 	@Override
 	public void _delete(XJLDomain domain) {
 		// TODO Auto-generated method stub
@@ -40,7 +41,7 @@ public class UserInfoService extends XJLService {
 	 * 插入userid，手持身份证正面照HandCardPhotoUrl地址
 	 * @param domain
 	 */
-	public void addHandCardPhotoUrl(XJLDomain domain){
+	public void _addHandCardPhotoUrl(XJLDomain domain){
 		this.userInfoMapper.insertHandCardPhotoUrl(domain);
 	}
 	
