@@ -17,6 +17,8 @@ public class UserInfo extends XJLDomain {
 	 * 用户编号
 	 */
 	private String userId;
+	
+	private String _userId;
 	/**
 	 * 用户姓名
 	 */
@@ -71,6 +73,12 @@ public class UserInfo extends XJLDomain {
 	private String cardFrontPhotoUrl;
 	 
 	 
+	public String get_userId() {
+		return _userId;
+	}
+	public void set_userId(String _userId) {
+		this._userId = _userId;
+	}
 	public String getAuthState() {
 		return authState;
 	}

@@ -1,8 +1,12 @@
 package com.xjl.pt.core.service;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.xjl.pt.core.domain.Dept;
 import com.xjl.pt.core.domain.User;
 import com.xjl.pt.core.domain.UserPwd;
 import com.xjl.pt.core.domain.XJLDomain;
@@ -41,15 +45,20 @@ public class UserPwdService extends XJLService  {
 	}
 	@Override
 	public void _resetNewId(XJLDomain domain) {
-		domain.setCancelDate(new Date());
-		domain.setCancelUserId("XJLXJL00-XJL1-XJL2-XJL3-XJLXJLXJLXJL");
-		domain.setState(XJLDomain.StateType.X.name());
-		this.userPwdMapper.delete(domain);
+
 	}
 	@Override
 	public void _modify(XJLDomain domain) {
 		this.userPwdMapper.update(domain);
-		
+	}
+	/**
+	 * 逻辑删除
+	 */
+	public void modifyUserPwd(XJLDomain domain){
+		domain.setCancelDate(new Date());
+		domain.setCancelUserId("XJLXJL00-XJL1-XJL2-XJL3-XJLXJLXJLXJL");
+ 		domain.setState(XJLDomain.StateType.X.name());
+ 	    this.userPwdMapper.delete(domain);
 	}
 	/**
 	 * 通过用户编号获取密码
