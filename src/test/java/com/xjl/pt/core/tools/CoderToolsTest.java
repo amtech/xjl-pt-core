@@ -43,4 +43,8 @@ public class CoderToolsTest {
 	public void generateDomain(){
 		this.coderTools.generateSDM("xjl_pt_dept", "com.xjl.pt.core");
 	}
+	@Test
+	public void generateSXDirItem(){
+		this.coderTools.generateSDM("xjl_sx_dir_item", "com.xjl.pt.sx");
+	}
 }

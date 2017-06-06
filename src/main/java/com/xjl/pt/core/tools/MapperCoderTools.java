@@ -19,11 +19,12 @@ public class MapperCoderTools {
 		sb.append("import org.apache.ibatis.annotations.Update;\r\n");
 		sb.append("import org.springframework.stereotype.Repository;\r\n");
 		sb.append("import java.util.List;\r\n");
+		sb.append("import com.xjl.pt.core.mapper.XJLMapper;\r\n");
 		sb.append("import com.xjl.pt.core.domain.XJLDomain;\r\n");
 		sb.append("import " + domainPackage + "." + domainName + ";\r\n");
 		sb.append("/**\r\n");
 		sb.append(" * " + table.getTableDesc() + "\r\n");
-		sb.append(" * @author MapperCoderTools\r\n");
+		sb.append(" * @author MapperCoderTools " +System.getProperties().getProperty("user.name")+"\r\n");
 		sb.append(" *\r\n");
 		sb.append("*/\r\n");
 		sb.append("@Repository\r\n");

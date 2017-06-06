@@ -39,14 +39,14 @@ public class ServiceCoderTools {
 		sb.append("import " + mapperPackage + "." + mapperName + ";\r\n");
 		sb.append("\r\n");
 		sb.append("/**\r\n");
-		sb.append(" * 字典\r\n");
-		sb.append(" * @author ServiceCoderTools\r\n");
+		sb.append(" * " + table.getTableDesc() + "\r\n");
+		sb.append(" * @author ServiceCoderTools " +System.getProperties().getProperty("user.name")+"\r\n");
 		sb.append(" *\r\n");
 		sb.append(" */\r\n");
 		sb.append("@Service\r\n");
 		sb.append("public class " + serviceName + " extends XJLService {\r\n");
 		sb.append("\t@Autowired\r\n");
-		sb.append("\tprivate " + mapperName + " " + XJLCoderTools.getDomainFieldName(mapperName) + ";\r\n");
+		sb.append("\tprivate " + mapperName + " " + StringUtils.uncapitalize(mapperName) + ";\r\n");
 		sb.append(add(mapperName));
 		sb.append(delete(mapperName));
 		sb.append(modify(mapperName));
@@ -75,7 +75,7 @@ public class ServiceCoderTools {
 		for (TableField tableField : fieldList) {
 			if (TableField.FIELD_TYPE_PK.equals(tableField.getFieldType())){
 				sb.append("\tpublic " + domainName + " queryById(String " + XJLCoderTools.getDomainFieldName(tableField.getFieldName()) + ") {\r\n");
-				sb.append("\t\treturn this." + XJLCoderTools.getDomainFieldName(mapperName) + ".selectById(" + XJLCoderTools.getDomainFieldName(tableField.getFieldName()) + ");\r\n");
+				sb.append("\t\treturn this." + StringUtils.uncapitalize(mapperName) + ".selectById(" + XJLCoderTools.getDomainFieldName(tableField.getFieldName()) + ");\r\n");
 				sb.append("\t}\r\n");
 				break;
 			}
@@ -87,7 +87,7 @@ public class ServiceCoderTools {
 		sb.append("\tpublic List<" + domainName + "> query(String search, int page, int pageSize) {\r\n");
 		sb.append("\t\tif (StringUtils.isEmpty(search)){\r\n");
 		sb.append("\t\t\tPageHelper.startPage(page, pageSize);\r\n");
-		sb.append("\t\t\treturn this." + XJLCoderTools.getDomainFieldName(mapperName) + ".selectAll();\r\n");
+		sb.append("\t\t\treturn this." + StringUtils.uncapitalize(mapperName) + ".selectAll();\r\n");
 		sb.append("\t\t} else {\r\n");
 		sb.append("\t\t\tthrow new RuntimeException(\"带search值的查询还没有实现\");\r\n");
 		sb.append("\t\t}\r\n");
@@ -98,7 +98,7 @@ public class ServiceCoderTools {
 		StringBuffer sb = new StringBuffer();
 		sb.append("\t@Override\r\n");
 		sb.append("\tpublic void _modify(XJLDomain domain) {\r\n");
-		sb.append("\t\tthis." + XJLCoderTools.getDomainFieldName(mapperName) + ".update(domain);\r\n");
+		sb.append("\t\tthis." + StringUtils.uncapitalize(mapperName) + ".update(domain);\r\n");
 		sb.append("\t}\r\n");
 		return sb.toString();
 	}
@@ -106,7 +106,7 @@ public class ServiceCoderTools {
 		StringBuffer sb = new StringBuffer();
 		sb.append("\t@Override\r\n");
 		sb.append("\tpublic void _delete(XJLDomain domain) {\r\n");
-		sb.append("\t\tthis." + XJLCoderTools.getDomainFieldName(mapperName) + ".delete(domain);\r\n");
+		sb.append("\t\tthis." + StringUtils.uncapitalize(mapperName) + ".delete(domain);\r\n");
 		sb.append("\t}\r\n");
 		return sb.toString();
 	}
@@ -114,7 +114,7 @@ public class ServiceCoderTools {
 		StringBuffer sb = new StringBuffer();
 		sb.append("\t@Override\r\n");
 		sb.append("\tpublic void _add(XJLDomain domain) {\r\n");
-		sb.append("\t\tthis." + XJLCoderTools.getDomainFieldName(mapperName) + ".insert(domain);\r\n");
+		sb.append("\t\tthis." + StringUtils.uncapitalize(mapperName) + ".insert(domain);\r\n");
 		sb.append("\t}\r\n");
 		return sb.toString();
 	}

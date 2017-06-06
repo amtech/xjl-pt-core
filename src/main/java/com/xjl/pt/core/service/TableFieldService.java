@@ -85,6 +85,9 @@ public class TableFieldService extends XJLService {
 	public TableField queryById(String fieldId){
 		return this.tableFieldMapper.selectById(fieldId);
 	}
+	public TableField queryByTableIdAndFieldName(String tableId, String fieldName){
+		return this.tableFieldMapper.selectByTableIdAndFieldName(tableId,fieldName);
+	}
 	public int queryCountByTableId(String tableId){
 		return this.tableFieldMapper.selectCountByTableId(tableId);
 	}

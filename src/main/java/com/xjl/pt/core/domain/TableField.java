@@ -16,6 +16,8 @@ public class TableField extends XJLDomain {
 	private String fieldName;
 	//字段描述
 	private String fieldDesc;
+	//字段备注
+	private String fieldComment;
 	//字段类型
 	private String fieldType;
 	//字段长度
@@ -63,6 +65,13 @@ public class TableField extends XJLDomain {
 	}
 	public void setFieldDesc(String fieldDesc) {
 		this.fieldDesc = fieldDesc;
+	}
+	
+	public String getFieldComment() {
+		return fieldComment;
+	}
+	public void setFieldComment(String fieldComment) {
+		this.fieldComment = fieldComment;
 	}
 	public String getFieldType() {
 		return fieldType;

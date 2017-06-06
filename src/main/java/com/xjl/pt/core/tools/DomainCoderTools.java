@@ -24,10 +24,10 @@ public class DomainCoderTools {
 		sb.append("import java.util.Date;\r\n");
 		sb.append("/**\r\n");
 		sb.append("* " + table.getTableDesc() + "\r\n");
-		sb.append("* @author DomainCoderTools\r\n");
+		sb.append("* @author DomainCoderTools " +System.getProperties().getProperty("user.name")+"\r\n");
 		sb.append("*\r\n");
 		sb.append("*/\r\n");
-		sb.append("@TableDB(name=\"" + table.getTableName() + "\")");
+		sb.append("@TableDB(name=\"" + table.getTableName() + "\")\r\n");
 		sb.append("public class " + domainName + " extends XJLDomain {\r\n");
 		for (TableField tableField : fieldList) {
 			String domainFieldType = XJLCoderTools.getDomainFieldType(tableField.getFieldType());
