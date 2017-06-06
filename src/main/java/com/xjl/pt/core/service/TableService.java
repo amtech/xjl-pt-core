@@ -52,6 +52,10 @@ public class TableService extends XJLService{
 		PageHelper.startPage(page, pageSize);
 		return this.tableMapper.selectAll();
 	}
+	public List<Table> queryBySearch(String search, int page, int pageSize){
+		PageHelper.startPage(page, pageSize);
+		return this.tableMapper.selectBySearch(search);
+	}
 	public Table queryById(String tableId){
 		if (StringUtils.isEmpty(tableId)){
 			return null;

@@ -38,5 +38,8 @@ public interface TableMapper {
 			+ XJLMapper.FIX_UPDATE_FIELD 
 			+" where table_id=#{tableId}")
 	public void update(XJLDomain table);
-
+	@Select("select table_id as tableId,table_name as tableName,table_desc as tableDesc"
+			+ ","+XJLMapper.FIX_SELECT_FIELD
+			+ " from " + TABLE_NAME + " where table_name like '%'||#{search}||'%' or table_desc like '%'||#{search}||'%'" )
+	public List<Table> selectBySearch(String search);
 }
