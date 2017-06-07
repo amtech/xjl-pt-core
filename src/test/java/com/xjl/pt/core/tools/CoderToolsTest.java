@@ -47,4 +47,8 @@ public class CoderToolsTest {
 	public void generateSXDirItem(){
 		this.coderTools.generateSDM("xjl_sx_dir_item", "com.xjl.pt.sx");
 	}
+	@Test
+	public void generateSXImplItem(){
+		this.coderTools.generateSDM("xjl_sx_impl_item", "com.xjl.pt.sx");
+	}
 }
