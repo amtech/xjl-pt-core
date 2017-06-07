@@ -25,12 +25,12 @@ public class DictItemTools {
 		if (StringUtils.isEmpty(codes)){
 			return null;
 		}
-		String[] dictItemCodeList = StringUtils.split(codes, ";");
+		String[] dictItemCodeList = StringUtils.split(codes, ",");
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i< dictItemCodeList.length; i++){
 			log.debug(i + ":" + dictItemCodeList[i]);
 			if (i > 0){
-				sb.append(";");
+				sb.append(",");
 			}
 			for (DictItem dictItem : dictItems) {
 				log.debug("字典:" + dictItem.getDictItemCode() + ":" + dictItem.getDictItemName());

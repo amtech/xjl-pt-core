@@ -175,7 +175,6 @@ public class TableFieldService extends XJLService {
 			break;
 		case TableField.FIELD_TYPE_DICT:
 			field.setForeignTableId(null);
-			field.setFieldLength(36);
 			break;
 		case TableField.FIELD_TYPE_FK:
 			field.setDictId(null);

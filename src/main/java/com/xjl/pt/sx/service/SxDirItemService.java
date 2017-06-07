@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.xjl.pt.core.service.XJLService;
+import com.xjl.pt.core.domain.User;
 import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.sx.domain.SxDirItem;
 import com.xjl.pt.sx.mapper.SxDirItemMapper;
@@ -44,6 +45,11 @@ public class SxDirItemService extends XJLService {
 	}
 	public SxDirItem queryById(String itemId) {
 		return this.sxDirItemMapper.selectById(itemId);
+	}
+	public void deploy(String itemId, User user) {
+		SxDirItem item = this.queryById(itemId);
+		item.setItemState("2");
+		this.modify(item, user);
 	}
 	@Override
 	public void _resetNewId(XJLDomain domain) {
