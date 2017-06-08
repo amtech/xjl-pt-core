@@ -1,5 +1,7 @@
 package com.xjl.pt.core.service;
 import java.util.Calendar;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.xjl.pt.core.domain.User;
@@ -38,6 +40,16 @@ public class UserInfoService extends XJLService {
 	}
 	
 	/**
+	 * 删除用户信息
+	 */
+	public void modifyUserInfo(XJLDomain domain){
+		domain.setCancelDate(new Date());
+		domain.setCancelUserId("XJLXJL00-XJL1-XJL2-XJL3-XJLXJLXJLXJL");
+ 		domain.setState(XJLDomain.StateType.X.name());
+		this.userInfoMapper.delete(domain);
+	}
+	
+	/**
 	 * 插入userid，手持身份证正面照HandCardPhotoUrl地址
 	 * @param domain
 	 */
@@ -56,6 +68,12 @@ public class UserInfoService extends XJLService {
 	 */
 	public UserInfo queryByPhoneNo(String phoneNo){
 		return this.userInfoMapper.selectByPhoneNo(phoneNo);
+	}
+	/**
+	 * 通过用户编号得到用户信息
+	 */
+	public UserInfo queryByUserId(String userId){
+		return this.userInfoMapper.selectByUserId(userId);
 	}
 	
 	/**

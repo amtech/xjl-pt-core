@@ -1,4 +1,5 @@
 package com.xjl.pt.core.mapper;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -20,8 +21,8 @@ public interface UserInfoMapper {
 	 * 执行插入
 	 * @param userInfo
 	 */
-	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,"+XJLMapper.FIX_INSERT_FIELD+")"
-			+"values(#{userId},#{cardNo},#{phoneNo},"+XJLMapper.FIX_INSERT_VALUE+")")
+	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,card_name,"+XJLMapper.FIX_INSERT_FIELD+")"
+			+"values(#{userId},#{cardNo},#{phoneNo},#{cardName},"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
 	
 	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,hand_card_photo_uri,auth_channel_type,auth_channel_name,"+XJLMapper.FIX_INSERT_FIELD+")"
@@ -49,12 +50,24 @@ public interface UserInfoMapper {
 	 * 得到用户信息
 	 * @param cardNo
 	 */
-	@Select("select "+USERINFO_SELECT_FIELD+" from "+TABLE_NAME+" where card_no =#{cardNo}")
+	@Select("select "+USERINFO_SELECT_FIELD+" from "+TABLE_NAME+" where card_no =#{cardNo}  and state='A' ")
 	public UserInfo selectByCardNo(String cardNo); 
 	/**
 	 * 得到用户信息
 	 * @param phoneNo
 	 */
-	@Select("select  "+USERINFO_SELECT_FIELD+","+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+" where phone_no =#{phoneNo}")
+	@Select("select  "+USERINFO_SELECT_FIELD+","+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+" where phone_no =#{phoneNo}  and state='A' ")
 	public UserInfo selectByPhoneNo(String phoneNo);
+	/**
+	 * 用户编号得到用户信息
+	 * @param userId
+	 */
+	@Select("select "+USERINFO_SELECT_FIELD+"  from  "+TABLE_NAME+" where  user_id=#{userId} and state='A' ")
+	public UserInfo selectByUserId(String userId);
+	
+	/**
+	 * 逻辑删除
+	 */
+	@Delete("update "+TABLE_NAME+" set "+XJLMapper.FIX_DELETE_FIELD+" where user_id=#{userId}")
+	public void delete(XJLDomain domain);
 }
