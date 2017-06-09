@@ -39,7 +39,8 @@ public class SxImplItemService extends XJLService {
 			PageHelper.startPage(page, pageSize);
 			return this.sxImplItemMapper.selectAll();
 		} else {
-			throw new RuntimeException("带search值的查询还没有实现");
+			PageHelper.startPage(page, pageSize);
+			return this.sxImplItemMapper.selectBySearch(search);
 		}
 	}
 	public SxImplItem queryById(String itemId) {

@@ -29,7 +29,9 @@ public interface SxImplItemMapper {
 	public List<SxImplItem> selectAll();
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where item_id=#{itemId}")
 	public SxImplItem selectById(String dictId);
-	
+	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where state='A' and (base_code like '%'||#{0}||'%' or item_name like  '%'||#{0}||'%' or according like  '%'||#{0}||'%' "
+			+ " or impl_content like '%'||#{0}||'%' or acceptance_conditions like '%'||#{0}||'%' or result_name like  '%'||#{0}||'%') order by create_date desc")
+	public List<SxImplItem> selectBySearch(String search);
 	
 	
 }
