@@ -51,4 +51,9 @@ public class CoderToolsTest {
 	public void generateSXImplItem(){
 		this.coderTools.generateSDM("xjl_sx_impl_item", "com.xjl.pt.sx");
 	}
+	@Test
+	public void generateGOVOpen(){
+		this.coderTools.generateSDM("xjl_news_government_affairs_openness_category", "com.xjl.pt.news");
+		this.coderTools.generateSDM("xjl_news_government_affairs_openness", "com.xjl.pt.news");
+	}
 }
