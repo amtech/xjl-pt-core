@@ -71,6 +71,15 @@ public class UserInfo extends XJLDomain {
 	 * 身份证正面照片地址
 	 */
 	private String cardFrontPhotoUrl;
+	
+	/**
+	 * 电子邮件
+	 */
+	private String  email;
+	/**
+	 * 地址
+	 */
+	private String address;
 	 
 	 
 	public String get_userId() {
@@ -162,5 +171,17 @@ public class UserInfo extends XJLDomain {
 	}
 	public void setCardNo(String cardNo) {
 		this.cardNo = cardNo;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 }

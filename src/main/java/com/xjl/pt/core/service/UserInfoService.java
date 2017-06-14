@@ -1,10 +1,7 @@
 package com.xjl.pt.core.service;
-import java.util.Calendar;
 import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.xjl.pt.core.domain.User;
 import com.xjl.pt.core.domain.UserInfo;
 import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.core.mapper.UserInfoMapper;
