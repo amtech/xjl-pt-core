@@ -53,10 +53,6 @@ public class Licence extends XJLDomain {
 	 * 可信度级别
 	 */
 	private String licenceTrustLevel;
-	/**
-	 * 证照存储路径
-	 */
-	private String licenceContentUrl;
 	
 	/**
 	 * 证照存储路径
@@ -135,12 +131,6 @@ public class Licence extends XJLDomain {
 	}
 	public void setLicenceTrustLevel(String licenceTrustLevel) {
 		this.licenceTrustLevel = licenceTrustLevel;
-	}
-	public String getLicenceContentUrl() {
-		return licenceContentUrl;
-	}
-	public void setLicenceContentUrl(String licenceContentUrl) {
-		this.licenceContentUrl = licenceContentUrl;
 	}
 	public int getLicenceItemCount() {
 		return licenceItemCount;

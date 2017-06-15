@@ -11,7 +11,7 @@ import com.xjl.pt.core.domain.XJLDomain;
  */
 public interface LicenceMapper {
 	static final String TABLE_NAME="xjl_zz_licence"; 
-	static final String SELECT_ALL="licence_id,licence_name,licence_category,licence_org,issuing_date,expiration_date,licence_status,owner_no,owner_type,licence_source_type,licence_trust_level,licence_content_url,licence_file_url,licence_file_type,"+XJLMapper.FIX_SELECT_FIELD;
+	static final String SELECT_ALL="licence_id,licence_name,licence_category,licence_org,issuing_date,expiration_date,licence_status,owner_no,owner_type,licence_source_type,licence_trust_level,licence_file_url,licence_file_type,"+XJLMapper.FIX_SELECT_FIELD;
 	/**
 	 * 查询所有有效证照
 	 */
@@ -28,7 +28,7 @@ public interface LicenceMapper {
 	 * 执行插入
 	 * @param domain
 	 */
-	@Insert("insert into "+TABLE_NAME+"(licence_id,licence_name,licence_category,licence_org,issuing_date,expiration_date,licence_status,owner_no,owner_type,licence_source_type,licence_trust_level,licence_content_url,licence_file_url,licence_file_type,"+XJLMapper.FIX_INSERT_FIELD+")"
-			+ "values(#{licenceId},#{licenceName},#{licenceCategory},#{licenceOrg},#{issuingDate},#{expirationDate},#{licenceStatus},#{ownerOn},#{ownerType},#{licenceSourceType},#{licenceTrustLevel},#{licenceContentUrl},#{licenceFileUrl},#{licenceFileType},"+XJLMapper.FIX_INSERT_VALUE+")")
+	@Insert("insert into "+TABLE_NAME+"(licence_id,licence_name,licence_category,licence_org,issuing_date,expiration_date,licence_status,owner_no,owner_type,licence_source_type,licence_trust_level,licence_file_url,licence_file_type,"+XJLMapper.FIX_INSERT_FIELD+")"
+			+ "values(#{licenceId},#{licenceName},#{licenceCategory},#{licenceOrg},#{issuingDate},#{expirationDate},#{licenceStatus},#{ownerOn},#{ownerType},#{licenceSourceType},#{licenceTrustLevel},#{licenceFileUrl},#{licenceFileType},"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
 }
