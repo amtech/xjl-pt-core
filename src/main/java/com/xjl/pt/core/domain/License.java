@@ -57,6 +57,10 @@ public class License extends XJLDomain {
 	 * 证照存储路径
 	 */
 	private String licenseContentUrl;
+	/**
+	 * 字典值数量,不是数据库中的属性
+	 */
+	private int licenseItemCount;
 	public String getLicenseId() {
 		return licenseId;
 	}
@@ -128,5 +132,11 @@ public class License extends XJLDomain {
 	}
 	public void setLicenseContentUrl(String licenseContentUrl) {
 		this.licenseContentUrl = licenseContentUrl;
+	}
+	public int getLicenseItemCount() {
+		return licenseItemCount;
+	}
+	public void setLicenseItemCount(int licenseItemCount) {
+		this.licenseItemCount = licenseItemCount;
 	}
 }
