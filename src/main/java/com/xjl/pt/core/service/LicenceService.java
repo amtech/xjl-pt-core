@@ -1,15 +1,12 @@
 package com.xjl.pt.core.service;
-
 import java.util.List;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.github.pagehelper.PageHelper;
-import com.xjl.pt.core.domain.License;
+import com.xjl.pt.core.domain.Licence;
 import com.xjl.pt.core.domain.XJLDomain;
-import com.xjl.pt.core.mapper.LicenseMapper;
+import com.xjl.pt.core.mapper.LicenceMapper;
 
 /**
  * 证照数据持久层
@@ -17,12 +14,13 @@ import com.xjl.pt.core.mapper.LicenseMapper;
  *
  */
 @Service
-public class LicenseService extends XJLService {
+public class LicenceService extends XJLService {
 	@Autowired
-	private LicenseMapper licenseMapper;
+	private LicenceMapper licenceMapper;
 
 	@Override
 	public void _add(XJLDomain domain) {
+		this.licenceMapper.insert(domain);
 	}
 	@Override
 	public void _delete(XJLDomain domain) {
@@ -39,10 +37,10 @@ public class LicenseService extends XJLService {
 	 * @param pageSize
 	 * @return
 	 */
-	public List<License> query(String search,int page,int pageSize){
+	public List<Licence> query(String search,int page,int pageSize){
 		if (StringUtils.isEmpty(search)){
 			PageHelper.startPage(page, pageSize);
-			return this.licenseMapper.selectAll();
+			return this.licenceMapper.selectAll();
 		}else {
 			throw new RuntimeException("带search值的查询还没有实现");
 		}
@@ -52,6 +50,6 @@ public class LicenseService extends XJLService {
 	 * 通过证照编号得到数量
 	 */
 	public int  countByLicense(String licenseId){
-		return this.licenseMapper.selectCountByLicenseid(licenseId);
+		return this.licenceMapper.selectCountByLicenceid(licenseId);
 	}
 }
