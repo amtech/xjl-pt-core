@@ -52,4 +52,12 @@ public class LicenceService extends XJLService {
 	public int  countByLicense(String licenseId){
 		return this.licenceMapper.selectCountByLicenceid(licenseId);
 	}
+	
+	/**
+	 * 通过ownid得到证照存放ftp的位置
+	 */
+	public List<Licence> queryUrlByOwnid(String ownerno){
+		List<Licence> list=this.licenceMapper.selectUrlByOwnid(ownerno);
+		return list;
+	}
 }

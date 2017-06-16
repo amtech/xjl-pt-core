@@ -31,4 +31,12 @@ public interface LicenceMapper {
 	@Insert("insert into "+TABLE_NAME+"(licence_id,licence_name,licence_category,licence_org,issuing_date,expiration_date,licence_status,owner_no,owner_type,licence_source_type,licence_trust_level,licence_file_url,licence_file_type,"+XJLMapper.FIX_INSERT_FIELD+")"
 			+ "values(#{licenceId},#{licenceName},#{licenceCategory},#{licenceOrg},#{issuingDate},#{expirationDate},#{licenceStatus},#{ownerOn},#{ownerType},#{licenceSourceType},#{licenceTrustLevel},#{licenceFileUrl},#{licenceFileType},"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
+	
+	/**
+	 * 通过ownid得到证照的ftp位置
+	 */
+	@Select("select "+SELECT_ALL+" from "+TABLE_NAME+" where  state='A' and owner_no=#{ownerOn}")
+	public List<Licence> selectUrlByOwnid(String ownerNo);
+	
+	
 }
