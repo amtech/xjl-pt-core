@@ -8,7 +8,7 @@ import com.xjl.pt.core.domain.XJLDomain;
 /**
  * 证照信息
  * @author guan.zheyuan
- */
+ */ 
 public interface LicenceMapper {
 	static final String TABLE_NAME="xjl_zz_licence"; 
 	static final String SELECT_ALL="licence_id as licenceId,licence_name as licenceName  ,licence_category as licenceCategory,licence_org,issuing_date as issuingDate,expiration_date as expirationDate ,licence_status as licenceStatus,owner_no as ownerOn,owner_type as ownerType,licence_source_type as licenceSourceType,licence_trust_level as licenceTrustLevel,licence_file_url as licenceFileUrl,licence_file_type as licenceFileType,"+XJLMapper.FIX_SELECT_FIELD;
