@@ -11,7 +11,7 @@ import com.xjl.pt.core.domain.XJLDomain;
  */
 public interface LicenceMapper {
 	static final String TABLE_NAME="xjl_zz_licence"; 
-	static final String SELECT_ALL="licence_id,licence_name,licence_category,licence_org,issuing_date,expiration_date,licence_status,owner_no,owner_type,licence_source_type,licence_trust_level,licence_file_url,licence_file_type,"+XJLMapper.FIX_SELECT_FIELD;
+	static final String SELECT_ALL="licence_id as licenceId,licence_name as licenceName  ,licence_category as licenceCategory,licence_org,issuing_date as issuingDate,expiration_date as expirationDate ,licence_status as licenceStatus,owner_no as ownerOn,owner_type as ownerType,licence_source_type as licenceSourceType,licence_trust_level as licenceTrustLevel,licence_file_url as licenceFileUrl,licence_file_type as licenceFileType,"+XJLMapper.FIX_SELECT_FIELD;
 	/**
 	 * 查询所有有效证照
 	 */

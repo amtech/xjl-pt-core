@@ -1,5 +1,7 @@
 package com.xjl.pt.core.domain;
 
+import java.util.Date;
+
 import com.xjl.pt.core.annotation.TableDB;
 
 /**
@@ -28,11 +30,11 @@ public class Licence extends XJLDomain {
 	/**
 	 * 证照开始时间
 	 */
-	private String issuingDate;
+	private Date issuingDate;
 	/**
 	 * 证照结束时间
 	 */
-	private String expirationDate;
+	private Date expirationDate;
 	/**
 	 * 证照状态
 	 */
@@ -90,16 +92,16 @@ public class Licence extends XJLDomain {
 	public void setLicenceOrg(String licenceOrg) {
 		this.licenceOrg = licenceOrg;
 	}
-	public String getIssuingDate() {
+	public Date getIssuingDate() {
 		return issuingDate;
 	}
-	public void setIssuingDate(String issuingDate) {
+	public void setIssuingDate(Date issuingDate) {
 		this.issuingDate = issuingDate;
 	}
-	public String getExpirationDate() {
+	public Date getExpirationDate() {
 		return expirationDate;
 	}
-	public void setExpirationDate(String expirationDate) {
+	public void setExpirationDate(Date expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 	public String getLicenceStatus() {
