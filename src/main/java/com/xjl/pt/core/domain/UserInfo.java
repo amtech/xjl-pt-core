@@ -80,8 +80,10 @@ public class UserInfo extends XJLDomain {
 	 * 地址
 	 */
 	private String address;
-	 
-	 
+	 /**
+	  * 用户类型
+	  */
+	private String userType;
 	public String get_userId() {
 		return _userId;
 	}
@@ -183,5 +185,11 @@ public class UserInfo extends XJLDomain {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 }

@@ -15,14 +15,14 @@ import com.xjl.pt.core.domain.XJLDomain;
 @Repository
 public interface UserInfoMapper {
 	static final String TABLE_NAME = "xjl_pt_userinfo";
-	static final String USERINFO_SELECT_FIELD="user_id as userid,card_no as cardno,phone_no as phoneno,hand_shot_photo_uri as handShotPhotoUrl,hand_card_photo_uri as handCardPhotoUrl,card_back_photo_uri as cardBackPhotoUrl,auth_state as authState,card_name as cardName ,card_front_photo_uri as cardFrontPhotoUrl,auth_date as authDate,auth_user_id as authUserId,auth_channel_type as authChannelType,auth_channel_name as authChannelName,email,address";
+	static final String USERINFO_SELECT_FIELD="user_id as userid,card_no as cardno,phone_no as phoneno,hand_shot_photo_uri as handShotPhotoUrl,hand_card_photo_uri as handCardPhotoUrl,card_back_photo_uri as cardBackPhotoUrl,auth_state as authState,card_name as cardName ,card_front_photo_uri as cardFrontPhotoUrl,auth_date as authDate,auth_user_id as authUserId,auth_channel_type as authChannelType,auth_channel_name as authChannelName,email,address,user_type as usertype";
 	
 	/**
 	 * 执行插入
 	 * @param userInfo
 	 */
-	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,card_name,email,address,"+XJLMapper.FIX_INSERT_FIELD+")"
-			+"values(#{userId},#{cardNo},#{phoneNo},#{cardName},#{email},#{address},"+XJLMapper.FIX_INSERT_VALUE+")")
+	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,card_name,email,address,user_type,"+XJLMapper.FIX_INSERT_FIELD+")"
+			+"values(#{userId},#{cardNo},#{phoneNo},#{cardName},#{email},#{address},#{usertype},"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
 	
 	@Insert("insert into "+TABLE_NAME+"(user_id,card_no,phone_no,hand_card_photo_uri,auth_channel_type,auth_channel_name,"+XJLMapper.FIX_INSERT_FIELD+")"
