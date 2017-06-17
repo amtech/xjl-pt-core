@@ -1,6 +1,7 @@
 package com.xjl.pt.core.service;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,6 +67,21 @@ public class UserLogService  extends XJLService   {
 	public UserLog queryUserLogForMax(String userId){
 		return this.userLogMapper.selectForMax(userId);
 	};
+	/**
+	 * 得到城市为空的日志
+	 * @param domain
+	 * @return
+	 */
+	public List<UserLog> queryUserLogForCityNull(){
+		return this.userLogMapper.selectForCityNull();
+	}
+	/**
+	 * 新增城市名称
+	 * @param domain
+	 */
+	public void addCity(XJLDomain domain){
+		this.userLogMapper.updateCity(domain);
+	}
 	@Override
 	protected void addDataLog(XJLDomain domain, User user, String operateType) {
 		//用户日志表的增删改不记录数据日志

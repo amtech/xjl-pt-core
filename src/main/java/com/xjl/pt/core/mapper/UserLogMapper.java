@@ -1,8 +1,9 @@
 package com.xjl.pt.core.mapper;
+import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
-
 import com.xjl.pt.core.domain.UserLog;
 import com.xjl.pt.core.domain.XJLDomain;
 /**
@@ -13,7 +14,7 @@ import com.xjl.pt.core.domain.XJLDomain;
 @Repository
 public interface UserLogMapper {
 	static final String TABLE_NAME="xjl_pt_user_log";
-	static final String USERLOG_SELECT_FIELD="ip,city,user_id as userid,user_name as username,uri";
+	static final String USERLOG_SELECT_FIELD="ip,city,user_id as userid,user_name as username,uri,master,state";
 	
 	
 	/**
@@ -29,4 +30,18 @@ public interface UserLogMapper {
 	 */
 	@Select("select "+USERLOG_SELECT_FIELD+","+XJLMapper.FIX_SELECT_FIELD+" from "+TABLE_NAME+" where create_date =(select max(create_date) from "+TABLE_NAME+" where user_id=#{userId})")
 	public UserLog selectForMax(String userId);
+	
+	/**
+	 * 得到城市名称为空的数据
+	 * @return
+	 */
+	@Select("select "+USERLOG_SELECT_FIELD+" from "+TABLE_NAME+" where city is null and state='A'")
+	public List<UserLog> selectForCityNull();
+	
+	/**
+	 * 添加城市定位
+	 * @param domain
+	 */
+	@Update("update "+TABLE_NAME+" set city=#{city} where master=#{master}")
+	public void updateCity(XJLDomain domain);
 }
