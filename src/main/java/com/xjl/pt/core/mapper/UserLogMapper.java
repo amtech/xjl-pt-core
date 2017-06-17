@@ -15,8 +15,6 @@ import com.xjl.pt.core.domain.XJLDomain;
 public interface UserLogMapper {
 	static final String TABLE_NAME="xjl_pt_user_log";
 	static final String USERLOG_SELECT_FIELD="ip,city,user_id as userid,user_name as username,uri,master,state";
-	
-	
 	/**
 	 * 执行插入
 	 * @param domain
@@ -24,7 +22,6 @@ public interface UserLogMapper {
 	@Insert("insert into "+TABLE_NAME+"(ip,user_id,user_name,city,uri,"+XJLMapper.FIX_INSERT_FIELD+")"
 			+"values(#{ip},#{userId},#{userName},#{city},#{url},"+XJLMapper.FIX_INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
-	
 	/**
 	 * 得到上一次登录日志
 	 */
