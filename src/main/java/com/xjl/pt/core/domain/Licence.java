@@ -40,6 +40,10 @@ public class Licence extends XJLDomain {
 	 */
 	private String licenceStatus;
 	/**
+	 * 证照状态 对应名称 非数据库字段
+	 */
+	private String licenceStatus$name;
+	/**
 	 * 拥有人编号
 	 */
 	private String  ownerOn;
@@ -51,6 +55,10 @@ public class Licence extends XJLDomain {
 	 * 证照来源
 	 */
 	private String licenceSourceType;
+	/**
+	 * 证照来源 对应名称 非数据库字段
+	 */
+	private String licenceSourceType$name;
 	/**
 	 * 可信度级别
 	 */
@@ -151,5 +159,17 @@ public class Licence extends XJLDomain {
 	}
 	public void setLicenceFileType(String licenceFileType) {
 		this.licenceFileType = licenceFileType;
+	}
+	public String getLicenceStatus$name() {
+		return licenceStatus$name;
+	}
+	public void setLicenceStatus$name(String licenceStatus$name) {
+		this.licenceStatus$name = licenceStatus$name;
+	}
+	public String getLicenceSourceType$name() {
+		return licenceSourceType$name;
+	}
+	public void setLicenceSourceType$name(String licenceSourceType$name) {
+		this.licenceSourceType$name = licenceSourceType$name;
 	}
 }
