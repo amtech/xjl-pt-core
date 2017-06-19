@@ -45,6 +45,9 @@ public class ZzCatalogService extends XJLService {
 	public ZzCatalog queryById(String catalogId) {
 		return this.zzCatalogMapper.selectById(catalogId);
 	}
+	public List<ZzCatalog> queryByUserId(String userId){
+		return this.zzCatalogMapper.selectByUserId(userId);
+	}
 	@Override
 	public void _resetNewId(XJLDomain domain) {
 		((ZzCatalog)domain).setCatalogId(UUID.randomUUID().toString());

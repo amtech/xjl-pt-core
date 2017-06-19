@@ -71,4 +71,11 @@ public class LicenceService extends XJLService {
 		List<Licence> list=this.licenceMapper.selectUrlByOwnid(ownerno);
 		return list;
 	}
+	
+	/**
+	 * 通过licenceid得到证照存放的ftp的位置
+	 */
+	public Licence queryUrlByLicenceId(String licenceid){
+		return this.licenceMapper.selectUrlByLicenceId(licenceid);
+	}
 }

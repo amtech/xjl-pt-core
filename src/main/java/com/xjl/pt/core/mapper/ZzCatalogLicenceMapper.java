@@ -23,7 +23,8 @@ public interface ZzCatalogLicenceMapper {
 	public void insert(XJLDomain domain);
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where state='A' order by create_date desc")
 	public List<ZzCatalogLicence> selectAll();
-	
+	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where catalog_id=#{catalogId} ")
+	public List<ZzCatalogLicence> selectByCatalogId(String catalogId);
 	
 	
 }

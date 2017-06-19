@@ -50,4 +50,8 @@ public class ZzCatalogLicenceService extends XJLService {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public List<ZzCatalogLicence> queryByCatalogId(String catalogId){
+		return this.zzCatalogLicenceMapper.selectByCatalogId(catalogId);
+	}
 }

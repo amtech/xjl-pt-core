@@ -29,7 +29,8 @@ public interface ZzCatalogMapper {
 	public List<ZzCatalog> selectAll();
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where catalog_id=#{catalogId}")
 	public ZzCatalog selectById(String dictId);
-	
+	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where user_id=#{userId}")
+	public List<ZzCatalog> selectByUserId(String userId);
 	
 	
 }

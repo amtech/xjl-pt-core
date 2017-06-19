@@ -41,19 +41,20 @@ public class CoderToolsTest {
 	}
 	@Test
 	public void generateDomain(){
-		this.coderTools.generateSDM("xjl_pt_dept", "com.xjl.pt.core");
+		this.coderTools.generateSDM("xjl_zz_catalog_licence", "com.xjl.pt.core");
 	}
 	@Test
 	public void generateSXDirItem(){
-		this.coderTools.generateSDM("xjl_sx_dir_item", "com.xjl.pt.sx");
+		this.coderTools.generateSDM("xjl_zz_catalog", "com.xjl.pt.sx");
 	}
 	@Test
 	public void generateSXImplItem(){
-		this.coderTools.generateSDM("xjl_sx_impl_item", "com.xjl.pt.sx");
+		this.coderTools.generateSDM("xjl_zz_catalog", "com.xjl.pt.sx");
 	}
 	@Test
 	public void generateGOVOpen(){
-		this.coderTools.generateSDM("xjl_news_government_affairs_openness_category", "com.xjl.pt.news");
-		this.coderTools.generateSDM("xjl_news_government_affairs_openness", "com.xjl.pt.news");
+		this.coderTools.generateSDM("xjl_zz_catalog_licence", "com.xjl.pt.news");
+	//	this.coderTools.generateSDM("xjl_zz_catalog", "com.xjl.pt.news");
 	}
+	
 }
