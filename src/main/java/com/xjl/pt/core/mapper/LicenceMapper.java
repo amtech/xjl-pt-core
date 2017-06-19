@@ -1,7 +1,11 @@
 package com.xjl.pt.core.mapper;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
 import com.xjl.pt.core.domain.Licence;
 import com.xjl.pt.core.domain.XJLDomain;
 
@@ -37,6 +41,25 @@ public interface LicenceMapper {
 	 */
 	@Select("select "+SELECT_ALL+" from "+TABLE_NAME+" where  state='A' and owner_no=#{ownerOn}")
 	public List<Licence> selectUrlByOwnid(String ownerNo);
+	
+	/**
+	 * 通过证照编号得到证照信息
+	 */
+	@Select("select "+SELECT_ALL+" from "+TABLE_NAME+" where licence_id=#{licenceId}")
+	public Licence selectByLicenceId(String licenceId);
+	
+	/**
+	 * 修改证照信息
+	 * @param domain
+	 */
+	@Update("update "+TABLE_NAME+" set licence_name =#{licenceName},issuing_date=#{issuingDate},expiration_date=#{expirationDate},licence_file_url=#{licenceFileUrl} where licence_id =#{licenceId}")
+	public void update(XJLDomain domain);
+	
+	/**
+	 * 逻辑删除数据
+	 */
+	@Delete("update "+TABLE_NAME+" set "+XJLMapper.FIX_DELETE_FIELD+" where licence_id=#{licenceId}")
+	public void delete(XJLDomain domain);
 	
 	
 }

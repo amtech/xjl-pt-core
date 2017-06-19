@@ -31,10 +31,12 @@ public class Licence extends XJLDomain {
 	 * 证照开始时间
 	 */
 	private Date issuingDate;
+	private String issuingDateStr;
 	/**
 	 * 证照结束时间
 	 */
 	private Date expirationDate;
+	private String exirationDateStr;
 	/**
 	 * 证照状态
 	 */
@@ -172,4 +174,17 @@ public class Licence extends XJLDomain {
 	public void setLicenceSourceType$name(String licenceSourceType$name) {
 		this.licenceSourceType$name = licenceSourceType$name;
 	}
+	public String getIssuingDateStr() {
+		return issuingDateStr;
+	}
+	public void setIssuingDateStr(String issuingDateStr) {
+		this.issuingDateStr = issuingDateStr;
+	}
+	public String getExirationDateStr() {
+		return exirationDateStr;
+	}
+	public void setExirationDateStr(String exirationDateStr) {
+		this.exirationDateStr = exirationDateStr;
+	}
+	
 }

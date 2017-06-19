@@ -24,9 +24,11 @@ public class LicenceService extends XJLService {
 	}
 	@Override
 	public void _delete(XJLDomain domain) {
+		this.licenceMapper.delete(domain);
 	}
 	@Override
 	public void _modify(XJLDomain domain) {
+		this.licenceMapper.update(domain);
 	}
 	@Override
 	public void _resetNewId(XJLDomain domain) {
@@ -46,11 +48,20 @@ public class LicenceService extends XJLService {
 		}
 	};
 	
+	
 	/**
 	 * 通过证照编号得到数量
 	 */
 	public int  countByLicense(String licenseId){
 		return this.licenceMapper.selectCountByLicenceid(licenseId);
+	}
+	
+	/**
+	 * 通过证照编号得到证照信息
+	 * @return
+	 */
+	public Licence queryByLicenceId(String licenceId){
+		return this.licenceMapper.selectByLicenceId(licenceId);
 	}
 	
 	/**
