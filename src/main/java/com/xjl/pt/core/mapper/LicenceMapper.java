@@ -61,5 +61,10 @@ public interface LicenceMapper {
 	@Delete("update "+TABLE_NAME+" set "+XJLMapper.FIX_DELETE_FIELD+" where licence_id=#{licenceId}")
 	public void delete(XJLDomain domain);
 	
+	/**
+	 * 通过licenceid得到证照的ftp位置
+	 */
+	@Select("select "+SELECT_ALL+" from "+TABLE_NAME+" where  state='A' and licence_id=#{licenceId}")
+	public Licence selectUrlByLicenceId(String licenceid);
 	
 }
