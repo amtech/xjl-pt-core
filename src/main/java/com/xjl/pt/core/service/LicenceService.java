@@ -71,11 +71,22 @@ public class LicenceService extends XJLService {
 		List<Licence> list=this.licenceMapper.selectUrlByOwnid(ownerno);
 		return list;
 	}
-	
 	/**
-	 * 通过licenceid得到证照存放的ftp的位置
+	 * 添加纠错信息
 	 */
-	public Licence queryUrlByLicenceId(String licenceid){
-		return this.licenceMapper.selectByLicenceId(licenceid);
+	public void addLicenceErrorContent(XJLDomain domain){
+		this.licenceMapper.insertErrorContent(domain);
+	}
+	/**
+	 * 得到政府纠错信息
+	 * @return
+	 */
+	public List<Licence> selectAllForError(String search,int page,int pageSize){
+		if (StringUtils.isEmpty(search)){
+			PageHelper.startPage(page, pageSize);
+			return this.licenceMapper.selectAllForError();
+		}else {
+			throw new RuntimeException("带search值的查询还没有实现");
+		}
 	}
 }

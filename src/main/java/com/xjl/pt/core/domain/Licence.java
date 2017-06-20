@@ -78,6 +78,11 @@ public class Licence extends XJLDomain {
 	 * 字典值数量,不是数据库中的属性
 	 */
 	private int licenceItemCount;
+	
+	/**
+	 * 纠错基本信息
+	 */
+	private String licenceErrorContent;
 	public String getLicenceId() {
 		return licenceId;
 	}
@@ -185,6 +190,12 @@ public class Licence extends XJLDomain {
 	}
 	public void setExirationDateStr(String exirationDateStr) {
 		this.exirationDateStr = exirationDateStr;
+	}
+	public String getLicenceErrorContent() {
+		return licenceErrorContent;
+	}
+	public void setLicenceErrorContent(String licenceErrorContent) {
+		this.licenceErrorContent = licenceErrorContent;
 	}
 	
 }

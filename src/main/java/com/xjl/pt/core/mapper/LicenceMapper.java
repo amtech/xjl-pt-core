@@ -15,12 +15,19 @@ import com.xjl.pt.core.domain.XJLDomain;
  */ 
 public interface LicenceMapper {
 	static final String TABLE_NAME="xjl_zz_licence"; 
-	static final String SELECT_ALL="licence_id as licenceId,licence_name as licenceName  ,licence_category as licenceCategory,licence_org,issuing_date as issuingDate,expiration_date as expirationDate ,licence_status as licenceStatus,owner_no as ownerOn,owner_type as ownerType,licence_source_type as licenceSourceType,licence_trust_level as licenceTrustLevel,licence_file_url as licenceFileUrl,licence_file_type as licenceFileType,"+XJLMapper.FIX_SELECT_FIELD;
+	static final String SELECT_ALL="licence_id as licenceId,licence_name as licenceName  ,licence_category as licenceCategory,licence_org,issuing_date as issuingDate,expiration_date as expirationDate ,licence_status as licenceStatus,owner_no as ownerOn,owner_type as ownerType,licence_source_type as licenceSourceType,licence_trust_level as licenceTrustLevel,licence_file_url as licenceFileUrl,licence_file_type as licenceFileType,licence_error_content as licenceErrorContent,"+XJLMapper.FIX_SELECT_FIELD;
 	/**
 	 * 查询所有有效证照
 	 */
 	@Select("select "+SELECT_ALL+" from "+TABLE_NAME+" where state ='A' order by create_date desc ")
 	public List<Licence> selectAll();
+	
+	/**
+	 * 得到用户纠错信息
+	 * @return
+	 */
+	@Select("select "+SELECT_ALL+" from "+TABLE_NAME+" where state='A' and licence_status in ('06','07') order by  create_date desc  ")
+	public List<Licence>selectAllForError();
 	
 	/**
 	 * 通过证照编号得到证照信息
@@ -52,7 +59,7 @@ public interface LicenceMapper {
 	 * 修改证照信息
 	 * @param domain
 	 */
-	@Update("update "+TABLE_NAME+" set licence_name =#{licenceName},issuing_date=#{issuingDate},expiration_date=#{expirationDate},licence_file_url=#{licenceFileUrl} where licence_id =#{licenceId}")
+	@Update("update "+TABLE_NAME+" set licence_name =#{licenceName},issuing_date=#{issuingDate},expiration_date=#{expirationDate},licence_file_url=#{licenceFileUrl},licence_status=#{licenceStatus} where licence_id =#{licenceId}")
 	public void update(XJLDomain domain);
 	
 	/**
@@ -61,6 +68,12 @@ public interface LicenceMapper {
 	@Delete("update "+TABLE_NAME+" set "+XJLMapper.FIX_DELETE_FIELD+" where licence_id=#{licenceId}")
 	public void delete(XJLDomain domain);
 	
+	/**
+	 * 增加纠错信息
+	 * @param domain
+	 */
+	@Update("update "+TABLE_NAME+" set licence_error_content=#{licenceErrorContent},licence_status=#{licenceStatus} where licence_id=#{licenceId}")
+	public void insertErrorContent(XJLDomain domain);
 	
 	
 }
