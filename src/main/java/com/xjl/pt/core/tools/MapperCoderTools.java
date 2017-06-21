@@ -84,7 +84,7 @@ public class MapperCoderTools {
 		for (TableField tableField : fieldList) {
 			if (TableField.FIELD_TYPE_PK.equals(tableField.getFieldType())){
 				sb.append("\t@Select(\"select \" + SELECT_ALL + \" from \" + TABLE_NAME + \" where " + tableField.getFieldName() + "=#{" + XJLCoderTools.getDomainFieldName(tableField.getFieldName()) +"}\")\r\n");
-				sb.append("\tpublic " + domainName + " selectById(String dictId);\r\n");
+				sb.append("\tpublic " + domainName + " selectById(String " + XJLCoderTools.getDomainFieldName(tableField.getFieldName()) +");\r\n");
 				break;
 			}
 		}

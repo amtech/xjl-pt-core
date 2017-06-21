@@ -56,5 +56,8 @@ public class CoderToolsTest {
 		this.coderTools.generateSDM("xjl_zz_catalog_licence", "com.xjl.pt.news");
 	//	this.coderTools.generateSDM("xjl_zz_catalog", "com.xjl.pt.news");
 	}
-	
+	@Test
+	public void generateCDCTerminal(){
+		this.coderTools.generateSDM("xjl_cdc_terminal", "com.xjl.cdc.cloud");
+	}
 }
