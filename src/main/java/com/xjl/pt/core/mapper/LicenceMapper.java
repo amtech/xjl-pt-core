@@ -59,7 +59,7 @@ public interface LicenceMapper {
 	 * 修改证照信息
 	 * @param domain
 	 */
-	@Update("update "+TABLE_NAME+" set licence_name =#{licenceName},issuing_date=#{issuingDate},expiration_date=#{expirationDate},licence_file_url=#{licenceFileUrl},licence_status=#{licenceStatus} where licence_id =#{licenceId}")
+	@Update("update "+TABLE_NAME+" set licence_name =#{licenceName},issuing_date=#{issuingDate},expiration_date=#{expirationDate},licence_file_url=#{licenceFileUrl},licence_file_type=#{licenceFileType},licence_status=#{licenceStatus} where licence_id =#{licenceId}")
 	public void update(XJLDomain domain);
 	
 	/**
