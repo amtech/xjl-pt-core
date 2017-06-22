@@ -50,6 +50,12 @@ public class ZzCatalogService extends XJLService {
 	}
 	@Override
 	public void _resetNewId(XJLDomain domain) {
-		((ZzCatalog)domain).setCatalogId(UUID.randomUUID().toString());
+	}
+	/**
+	 * 修改目录名称
+	 * @param domain
+	 */
+	public void modifyCatalogName(XJLDomain domain){
+		this.zzCatalogMapper.updateCatalogName(domain);
 	}
 }

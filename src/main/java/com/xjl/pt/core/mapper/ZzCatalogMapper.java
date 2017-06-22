@@ -25,6 +25,13 @@ public interface ZzCatalogMapper {
 	public void delete(XJLDomain domain);
 	@Update("update " + TABLE_NAME + " set " + UPDATE_FIELD + " where catalog_id=#{catalogId}")	
 	public void update(XJLDomain domain);
+	/**
+	 * 更新目录名称
+	 * @param domain
+	 */
+	@Update("update " + TABLE_NAME + " set " + "catalog_name=#{catalogName} where catalog_id=#{catalogId}")	
+	public void updateCatalogName(XJLDomain domain);
+	
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where state='A' order by create_date desc")
 	public List<ZzCatalog> selectAll();
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where catalog_id=#{catalogId}")

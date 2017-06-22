@@ -50,7 +50,11 @@ public class ZzCatalogLicenceService extends XJLService {
 		// TODO Auto-generated method stub
 		
 	}
-	
+	/**
+	 * 通过catalogId查出目录中的证照记录
+	 * @param catalogId
+	 * @return
+	 */
 	public List<ZzCatalogLicence> queryByCatalogId(String catalogId){
 		return this.zzCatalogLicenceMapper.selectByCatalogId(catalogId);
 	}
