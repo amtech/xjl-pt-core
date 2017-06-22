@@ -95,6 +95,9 @@ public class TableFieldService extends XJLService {
 		PageHelper.startPage(page, pageSize);
 		return this.tableFieldMapper.selectByTableId(tableId);
 	}
+	public List<TableField> queryByTableId(String tableId){
+		return this.tableFieldMapper.selectByTableId(tableId);
+	}
 	public void initFieldType$name(TableField field){
 		if (StringUtils.isEmpty(field.getFieldType())){
 			field.setFieldType$name("空");
