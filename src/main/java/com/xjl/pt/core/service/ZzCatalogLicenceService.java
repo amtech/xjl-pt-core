@@ -58,4 +58,12 @@ public class ZzCatalogLicenceService extends XJLService {
 	public List<ZzCatalogLicence> queryByCatalogId(String catalogId){
 		return this.zzCatalogLicenceMapper.selectByCatalogId(catalogId);
 	}
+	
+	/**
+	 * 通过catalogid和licenceid查出目录中的证照记录
+	 * 
+	 */
+	public List<ZzCatalogLicence> queryByCatalogIdAndLicenceId(String catalogId,String licenceId){
+		return this.zzCatalogLicenceMapper.selectByCatalogIdAndLicenceId(catalogId, licenceId);
+	}
 }

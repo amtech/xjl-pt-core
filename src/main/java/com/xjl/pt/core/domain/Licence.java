@@ -24,6 +24,10 @@ public class Licence extends XJLDomain {
 	 */
 	private String licenceCategory;
 	/**
+	 * 证照分类 对应名称 非数据库字段
+	 */
+	private String licenceCategory$name;
+	/**
 	 * 证照所在地
 	 */
 	private String licenceOrg;
@@ -74,6 +78,10 @@ public class Licence extends XJLDomain {
 	 * 证照文件类型
 	 */
 	private String licenceFileType;
+	/**
+	 * 证照文件类型 对应名称 非数据库字段
+	 */
+	private String licenceFileType$name;
 	/**
 	 * 字典值数量,不是数据库中的属性
 	 */
@@ -197,5 +205,18 @@ public class Licence extends XJLDomain {
 	public void setLicenceErrorContent(String licenceErrorContent) {
 		this.licenceErrorContent = licenceErrorContent;
 	}
+	public String getLicenceFileType$name() {
+		return licenceFileType$name;
+	}
+	public void setLicenceFileType$name(String licenceFileType$name) {
+		this.licenceFileType$name = licenceFileType$name;
+	}
+	public String getLicenceCategory$name() {
+		return licenceCategory$name;
+	}
+	public void setLicenceCategory$name(String licenceCategory$name) {
+		this.licenceCategory$name = licenceCategory$name;
+	}
+	
 	
 }

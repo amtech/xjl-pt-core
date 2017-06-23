@@ -25,6 +25,7 @@ public interface ZzCatalogLicenceMapper {
 	public List<ZzCatalogLicence> selectAll();
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where catalog_id=#{catalogId} ")
 	public List<ZzCatalogLicence> selectByCatalogId(String catalogId);
-	
+	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where catalog_id=#{catalogId} and licence_id=#{licenceId}")
+	public List<ZzCatalogLicence> selectByCatalogIdAndLicenceId(String catalogId,String licenceId);
 	
 }
