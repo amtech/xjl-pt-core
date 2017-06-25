@@ -19,10 +19,22 @@ public interface ZzCatalogMapper {
 	static final String INSERT_FIELD = "catalog_id,catalog_name,user_id," + XJLMapper.FIX_INSERT_FIELD;
 	static final String INSERT_VALUE = "#{catalogId},#{catalogName},#{userId}," + XJLMapper.FIX_INSERT_VALUE;
 	static final String UPDATE_FIELD = "catalog_name=#{catalogName},user_id=#{userId}," + XJLMapper.FIX_UPDATE_FIELD;
+	/**
+	 * 执行插入操作
+	 * @param domain
+	 */
 	@Insert("insert into " + TABLE_NAME + "(" + INSERT_FIELD + ") values("+INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
+	/**
+	 * 执行删除操作(逻辑删除)
+	 * @param domain
+	 */
 	@Update("update " + TABLE_NAME + " set " + XJLMapper.FIX_DELETE_FIELD + " where catalog_id=#{catalogId}")	
 	public void delete(XJLDomain domain);
+	/**
+	 * 执行更新操作
+	 * @param domain
+	 */
 	@Update("update " + TABLE_NAME + " set " + UPDATE_FIELD + " where catalog_id=#{catalogId}")	
 	public void update(XJLDomain domain);
 	/**

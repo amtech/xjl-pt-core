@@ -42,7 +42,7 @@ public class ZzCatalogLicenceService extends XJLService {
 	@Override
 	public void _delete(XJLDomain domain) {
 		// TODO Auto-generated method stub
-		
+		this.zzCatalogLicenceMapper.delete(domain);
 	}
 
 	@Override
@@ -65,5 +65,11 @@ public class ZzCatalogLicenceService extends XJLService {
 	 */
 	public List<ZzCatalogLicence> queryByCatalogIdAndLicenceId(String catalogId,String licenceId){
 		return this.zzCatalogLicenceMapper.selectByCatalogIdAndLicenceId(catalogId, licenceId);
+	}
+	/**
+	 * 通过licanceid获取目录中的某条证照记录
+	 */
+	public List<ZzCatalogLicence> queryByLicenceId(String licenceId){
+		return this.zzCatalogLicenceMapper.selectByLicenceId(licenceId);
 	}
 }
