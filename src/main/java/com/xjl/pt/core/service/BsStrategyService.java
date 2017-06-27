@@ -58,4 +58,10 @@ public class BsStrategyService extends XJLService {
 	public void modifyStateById(String StrategyId){
 		this.bsStrategyMapper.updateStateById(StrategyId);
 	}
+	/**
+	 * 通过创建用户id查找数据
+	 */
+	public List<BsStrategy> queryByUserId(String userId){
+		return this.bsStrategyMapper.selectByUserId(userId);
+	}
 }
