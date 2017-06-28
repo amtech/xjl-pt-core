@@ -41,7 +41,7 @@ public class CoderToolsTest {
 	}
 	@Test
 	public void generateDomain(){
-		this.coderTools.generateSDM("xjl_zz_catalog_licence", "com.xjl.pt.core");
+		this.coderTools.generateSDM("xjl_bj_piece_licence", "com.xjl.pt.core");
 	}
 	@Test
 	public void generateSXDirItem(){

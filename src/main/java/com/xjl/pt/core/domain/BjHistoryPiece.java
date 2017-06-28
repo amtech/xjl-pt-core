@@ -8,7 +8,7 @@ import java.util.Date;
 * @author DomainCoderTools 陶杰
 *
 */
-@TableDB(name="xjl_bj_history_piece")
+@TableDB(name="xjl_bj_history_piece") 
 public class BjHistoryPiece extends XJLDomain {
 	//办件状态
 	private String managementStatus;
