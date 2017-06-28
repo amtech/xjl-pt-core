@@ -31,7 +31,7 @@ public abstract  class XJLService extends XJLBaseService{
 	@Override
 	public final void add(XJLDomain domain, User user){
 		super.add(domain, user);
-		this.addDataLog(domain, user, DataLog.OPERATE_TYPE_ADD);
+		//this.addDataLog(domain, user, DataLog.OPERATE_TYPE_ADD);
 		
 	}
 	
@@ -40,7 +40,7 @@ public abstract  class XJLService extends XJLBaseService{
 	 */
 	public final void delete(XJLDomain domain, User user){
 		super.delete(domain, user);
-		this.addDataLog(domain, user, DataLog.OPERATE_TYPE_DELETE);
+		//this.addDataLog(domain, user, DataLog.OPERATE_TYPE_DELETE);
 	}
 	/**
 	 * 赋值，记录修改人和修改时间
@@ -50,7 +50,7 @@ public abstract  class XJLService extends XJLBaseService{
 	@Override
 	public final void modify(XJLDomain domain, User user){
 		super.modify(domain, user);
-		this.addDataLog(domain, user, DataLog.OPERATE_TYPE_MODIFY);
+		//this.addDataLog(domain, user, DataLog.OPERATE_TYPE_MODIFY);
 	}
 	/**
 	 * 增加数据日志记录
