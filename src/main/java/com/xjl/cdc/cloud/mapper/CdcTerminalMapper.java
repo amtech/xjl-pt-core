@@ -15,10 +15,10 @@ import com.xjl.cdc.cloud.domain.CdcTerminal;
 @Repository
 public interface CdcTerminalMapper {
 	static final String TABLE_NAME = "xjl_cdc_terminal";
-	static final String SELECT_ALL = "terminal_id as terminalId,terminal_guid as terminalGuid,terminal_type as terminalType,"+ XJLMapper.FIX_SELECT_FIELD;
-	static final String INSERT_FIELD = "terminal_id,terminal_guid,terminal_type," + XJLMapper.FIX_INSERT_FIELD;
-	static final String INSERT_VALUE = "#{terminalId},#{terminalGuid},#{terminalType}," + XJLMapper.FIX_INSERT_VALUE;
-	static final String UPDATE_FIELD = "terminal_guid=#{terminalGuid},terminal_type=#{terminalType}," + XJLMapper.FIX_UPDATE_FIELD;
+	static final String SELECT_ALL = "terminal_id as terminalId,terminal_guid as terminalGuid,terminal_type as terminalType,terminal_state as terminalState,terminal_url as terminalUrl,"+ XJLMapper.FIX_SELECT_FIELD;
+	static final String INSERT_FIELD = "terminal_id,terminal_guid,terminal_type,terminal_state,terminal_url," + XJLMapper.FIX_INSERT_FIELD;
+	static final String INSERT_VALUE = "#{terminalId},#{terminalGuid},#{terminalType},#{terminalState},#{terminalUrl}," + XJLMapper.FIX_INSERT_VALUE;
+	static final String UPDATE_FIELD = "terminal_guid=#{terminalGuid},terminal_type=#{terminalType},terminal_state=#{terminalState},terminal_url=#{terminalUrl}," + XJLMapper.FIX_UPDATE_FIELD;
 	@Insert("insert into " + TABLE_NAME + "(" + INSERT_FIELD + ") values("+INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
 	@Update("update " + TABLE_NAME + " set " + XJLMapper.FIX_DELETE_FIELD + " where terminal_id=#{terminalId}")	

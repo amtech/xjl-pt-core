@@ -14,6 +14,10 @@ public class CdcTerminal extends XJLDomain {
 	private String terminalId;
 	//终端唯一标示
 	private String terminalGuid;
+	//终端状态，1出厂检测成功，2主页设置成功
+	private String terminalState;
+	//终端url
+	private String terminalUrl;
 	//终端类型
 	private String terminalType;
 	//终端类型 对应的名称，非数据库字段
@@ -42,4 +46,18 @@ public class CdcTerminal extends XJLDomain {
 	public String getTerminalType$name(){
 		return this.terminalType$name;
 	}
+	public String getTerminalState() {
+		return terminalState;
+	}
+	public void setTerminalState(String terminalState) {
+		this.terminalState = terminalState;
+	}
+	public String getTerminalUrl() {
+		return terminalUrl;
+	}
+	public void setTerminalUrl(String terminalUrl) {
+		this.terminalUrl = terminalUrl;
+	}
+	
 }
+
