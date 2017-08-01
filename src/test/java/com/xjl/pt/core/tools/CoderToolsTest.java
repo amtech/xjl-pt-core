@@ -60,4 +60,8 @@ public class CoderToolsTest {
 	public void generateCDCTerminal(){
 		this.coderTools.generateSDM("xjl_cdc_terminal", "com.xjl.cdc.cloud");
 	}
+	@Test
+	public void generateRCUErrorLog(){
+		this.coderTools.generateSDM("xjl_rcu_error_log", "com.xjl.rcu.monitor");
+	}
 }
