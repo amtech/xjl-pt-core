@@ -17,9 +17,9 @@ import com.xjl.pt.core.mapper.XJLMapper;
 @Repository
 public interface CdcTerminalLogMapper {
 	static final String TABLE_NAME = "xjl_cdc_terminal_log";
-	static final String SELECT_ALL = "log_id as logId,terminal_id as terminalId,terminal_guid as terminalGuid,operate_type as operateType,operate_desc as operateDesc,operate_date as operateDate,ip,location,lng,lat,province,city,country,town,village,"+ XJLMapper.FIX_SELECT_FIELD;
-	static final String INSERT_FIELD = "log_id,terminal_id,terminal_guid,operate_type,operate_desc,operate_date,ip,location,lng,lat,province,city,country,town,village," + XJLMapper.FIX_INSERT_FIELD;
-	static final String INSERT_VALUE = "#{logId},#{terminalId},#{terminalGuid},#{operateType},#{operateDesc},#{operateDate},#{ip},#{location},#{lng},#{lat},#{province},#{city},#{country},#{town},#{village}," + XJLMapper.FIX_INSERT_VALUE;
+	static final String SELECT_ALL = "log_id as logId,terminal_id as terminalId,terminal_guid as terminalGuid,operate_type as operateType,operate_desc as operateDesc,operate_date as operateDate,ip,location,location_code as locationCode,lng,lat,province,city,country,town,village,"+ XJLMapper.FIX_SELECT_FIELD;
+	static final String INSERT_FIELD = "log_id,terminal_id,terminal_guid,operate_type,operate_desc,operate_date,ip,location,location_code,lng,lat,province,city,country,town,village," + XJLMapper.FIX_INSERT_FIELD;
+	static final String INSERT_VALUE = "#{logId},#{terminalId},#{terminalGuid},#{operateType},#{operateDesc},#{operateDate},#{ip},#{location},#{locationCode},#{lng},#{lat},#{province},#{city},#{country},#{town},#{village}," + XJLMapper.FIX_INSERT_VALUE;
 	@Insert("insert into " + TABLE_NAME + "(" + INSERT_FIELD + ") values("+INSERT_VALUE+")")
 	public void insert(XJLDomain domain);
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where state='A' order by create_date desc")

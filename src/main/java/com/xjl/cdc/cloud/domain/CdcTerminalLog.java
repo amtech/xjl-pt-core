@@ -28,6 +28,8 @@ public class CdcTerminalLog extends XJLDomain {
 	private String ip;
 	// 终端访问位置
 	private String location;
+	// 位置行政编码
+	private String locationCode;
 	// 终端访问位置经度
 	private String lng;
 	// 终端访问位置纬度
@@ -90,6 +92,13 @@ public class CdcTerminalLog extends XJLDomain {
 	}
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	
+	public String getLocationCode() {
+		return locationCode;
+	}
+	public void setLocationCode(String locationCode) {
+		this.locationCode = locationCode;
 	}
 	public String getLng() {
 		return lng;
