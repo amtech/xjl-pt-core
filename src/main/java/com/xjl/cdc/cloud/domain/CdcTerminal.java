@@ -22,6 +22,8 @@ public class CdcTerminal extends XJLDomain {
 	private String terminalType;
 	//终端类型 对应的名称，非数据库字段
 	private String terminalType$name;
+	//对应的项目模块id
+	private String moduleId;
 	public void setTerminalId(String terminalId){
 		this.terminalId = terminalId;
 	}
@@ -57,6 +59,12 @@ public class CdcTerminal extends XJLDomain {
 	}
 	public void setTerminalUrl(String terminalUrl) {
 		this.terminalUrl = terminalUrl;
+	}
+	public String getModuleId() {
+		return moduleId;
+	}
+	public void setModuleId(String moduleId) {
+		this.moduleId = moduleId;
 	}
 	
 }

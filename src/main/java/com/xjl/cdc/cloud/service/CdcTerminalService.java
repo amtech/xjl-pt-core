@@ -52,4 +52,7 @@ public class CdcTerminalService extends XJLService {
 	public void _resetNewId(XJLDomain domain) {
 		((CdcTerminal)domain).setTerminalId(UUID.randomUUID().toString());
 	}
+	public void updateUrlByModuleId(String url, String moduleId){
+		this.cdcTerminalMapper.updateUrlByModuleId(url, moduleId);
+	}
 }
