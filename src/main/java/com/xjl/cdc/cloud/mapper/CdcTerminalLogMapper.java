@@ -30,5 +30,4 @@ public interface CdcTerminalLogMapper {
 	public List<CdcTerminalLog> selectByTMId(String terminalId);
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where terminal_guid=#{terminalGuid}")
 	public List<CdcTerminalLog> selectByGUID(String terminalGuid);
-	
 }
