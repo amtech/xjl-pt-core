@@ -3,10 +3,13 @@ package com.xjl.cdc.cloud.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.stereotype.Repository;
 
 import com.xjl.cdc.cloud.domain.CdcTerminalLog;
+import com.xjl.cdc.cloud.service.CdcTerminalLogService;
 import com.xjl.pt.core.domain.XJLDomain;
 import com.xjl.pt.core.mapper.XJLMapper;
 /**
@@ -28,6 +31,11 @@ public interface CdcTerminalLogMapper {
 	public CdcTerminalLog selectById(String terminalId);
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where terminal_id=#{terminalId}")
 	public List<CdcTerminalLog> selectByTMId(String terminalId);
-	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where terminal_guid=#{terminalGuid}")
+	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where terminal_guid=#{terminalGuid} order by create_date desc")
 	public List<CdcTerminalLog> selectByGUID(String terminalGuid);
+	@SelectProvider(type = CdcTerminalLogService.class, method = "queryByGUIDOperTime")
+	public List<CdcTerminalLog> selectByGUIDOperTime(@Param("terminalGuid") String terminalGuid, @Param("beginTime") String beginTime,@Param("endTime") String endTime);
+	@SelectProvider(type = CdcTerminalLogService.class, method = "queryByGUIDOperTimeTj")
+	public List<CdcTerminalLog> selectByGUIDOperTimeTj(@Param("beginTime") String beginTime,@Param("endTime") String endTime);
+
 }

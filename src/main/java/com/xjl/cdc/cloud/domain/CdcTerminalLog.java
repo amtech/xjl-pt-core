@@ -44,6 +44,12 @@ public class CdcTerminalLog extends XJLDomain {
 	private String town;
 	// 村
 	private String village;
+	// 查询开始时间
+	private String beginTime;
+	// 查询结束时间
+	private String endTime;
+	// 查询统计
+	private Integer logCount;
 	
 	public String getLogId() {
 		return logId;
@@ -141,6 +147,24 @@ public class CdcTerminalLog extends XJLDomain {
 	}
 	public void setVillage(String village) {
 		this.village = village;
+	}
+	public String getBeginTime() {
+		return beginTime;
+	}
+	public void setBeginTime(String beginTime) {
+		this.beginTime = beginTime;
+	}
+	public String getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+	public Integer getLogCount() {
+		return logCount;
+	}
+	public void setLogCount(Integer logCount) {
+		this.logCount = logCount;
 	}
 	
 }
