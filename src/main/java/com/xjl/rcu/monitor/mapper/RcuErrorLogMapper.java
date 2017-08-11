@@ -1,12 +1,17 @@
 package com.xjl.rcu.monitor.mapper;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
-import java.util.List;
-import com.xjl.pt.core.mapper.XJLMapper;
+
 import com.xjl.pt.core.domain.XJLDomain;
+import com.xjl.pt.core.mapper.XJLMapper;
 import com.xjl.rcu.monitor.domain.RcuErrorLog;
+import com.xjl.rcu.monitor.service.RcuErrorLogService;
 /**
  * rcu错误日志表
  * @author MapperCoderTools lilisheng
@@ -29,7 +34,15 @@ public interface RcuErrorLogMapper {
 	public List<RcuErrorLog> selectAll();
 	@Select("select " + SELECT_ALL + " from " + TABLE_NAME + " where error_id=#{errorId}")
 	public RcuErrorLog selectById(String errorId);
-	
-	
-	
+	/**
+	 * 增加按时间查询
+	 * @param beginTime
+	 * @param endTime
+	 * @return
+	 */
+	@SelectProvider(type = RcuErrorLogService.class, method = "selectByErrorTime")
+	public List<RcuErrorLog> selectByErrorTime(@Param("beginTime") String beginTime,@Param("endTime") String endTime);
+	@SelectProvider(type = RcuErrorLogService.class, method = "selectByErrorTimeTj")
+	public List<RcuErrorLog> selectByErrorTimeTj(@Param("beginTime") String beginTime,@Param("endTime") String endTime);
+
 }

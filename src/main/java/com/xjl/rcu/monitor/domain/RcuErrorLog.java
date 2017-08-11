@@ -26,6 +26,13 @@ public class RcuErrorLog extends XJLDomain {
 	private String rcuId;
 	//错误id
 	private String errorId;
+	// 查询统计内容
+	private String logContent;
+	// 查询统计类型
+	private String logCountType;
+	// 查询统计
+	private Integer logCount;
+	
 	public void setErrorDate(String errorDate){
 		this.errorDate = errorDate;
 	}
@@ -74,4 +81,23 @@ public class RcuErrorLog extends XJLDomain {
 	public String getErrorId(){
 		return this.errorId;
 	}
+	public String getLogContent() {
+		return logContent;
+	}
+	public void setLogContent(String logContent) {
+		this.logContent = logContent;
+	}
+	public String getLogCountType() {
+		return logCountType;
+	}
+	public void setLogCountType(String logCountType) {
+		this.logCountType = logCountType;
+	}
+	public Integer getLogCount() {
+		return logCount;
+	}
+	public void setLogCount(Integer logCount) {
+		this.logCount = logCount;
+	}
+	
 }
